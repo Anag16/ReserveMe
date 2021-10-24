@@ -1,6 +1,6 @@
 # ReserveMe
 
-An app/site to reserve a spot in various restaurants and shops (because of the pandemic and capacity limits) for everyone who wants to avoid crowds. Stack includes React, Node.js, and Postgres.
+An app/site to reserve a spot in various shops and establishments (because of the pandemic and capacity limits) for everyone who wants to avoid crowds. Stack includes React, Node.js, and Postgres.
 
 ## Setup
 1. `npm install` to install dependencies.
