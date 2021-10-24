@@ -4,7 +4,7 @@ export default function List(props) {
 
   return (
     <div className="List">
-      <h1>List</h1>
+      <h1>Store List</h1>
     </div>
   )
 }
