@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function StoreList(props) {
+export default function List(props) {
 
   return (
     <div className="List">

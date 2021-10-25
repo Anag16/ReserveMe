@@ -8,8 +8,7 @@ module.exports = (db) => {
         email,
         fullname,
         phone,
-        user_type,
-        reservation_id
+        user_type
       FROM users`
     ).then(({ rows: users }) => {
       response.json(
