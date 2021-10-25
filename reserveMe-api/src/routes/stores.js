@@ -12,7 +12,6 @@ module.exports = db => {
       dates,
       opening_hour,
       closing_hour,
-      reservation_id,
       admin_id
     FROM stores
     `

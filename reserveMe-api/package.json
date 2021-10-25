@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./src/index.js",
     "error": "TEST_ERROR=true node ./src/index.js",
-    "reset": "psql -U postgres -d reservedb < ./src/db/schema/create.sql"
+    "reset": "psql -U postgres -d reservedb < ./src/db/schema/create.sql && psql -U postgres -d reservedb < ./src/db/schema/stores.sql"
   },
   "author": "",
   "license": "ISC",
