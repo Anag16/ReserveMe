@@ -12,6 +12,7 @@ const app = express();
 
 const db = require("./db");
 const secret = process.env.TOKENSECRET || 'mysecret';
+const token = require("./routes/tokenRoute");
 const users = require("./routes/usersRoute");
 const reservations = require("./routes/reservationsRoute");
 const stores = require("./routes/storesRoute");
@@ -42,6 +43,8 @@ module.exports = function application(
   app.use(bodyparser.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
+
+  app.use("/token", token());
 
   app.use("/api", users(db));
   app.use("/api", reservations(db));
