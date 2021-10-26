@@ -11,7 +11,7 @@ export default function Counter(props) {
         alt="Add"
         onClick={props.onAdd}
       />
-      <h1>{props.counnt}</h1>
+      <h1>{props.count}</h1>
       <img
         className="counter_reduce"
         src="images/reduce.png"
