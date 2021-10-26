@@ -4,19 +4,17 @@ const {checkPassword} = require('../../model/userModel')
 module.exports = db => {
   router.post("/", (req, res) => {
     console.log("Data received");
-        console.log(`${req.body.email} : ${req.body.password}`);
-        //Get user id and pass it to users/maps/:userId
-        checkPassword(db, req.body.email, req.body.password)
+        console.log(`${req.body.credentials.email} : ${req.body.credentials.password}`);
+        checkPassword(db, req.body.credentials.email, req.body.credentials.password)
           .then(existingUser => {
             if (existingUser) {
               console.log('User found: ' + existingUser.user_id);
               res.send({
                 token: 'test123'
               });
-              // res.redirect(`/home`);
             } else {
               console.log('Invalid email/password');
-              res.redirect('/login');
+              res.send('Invalid email/password');
             }
           });
   });

@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import './Login.css';
 
 async function loginUser(credentials) {
- return fetch('/login', {
-   method: 'POST',
-   headers: {
-     'Content-Type': 'application/json'
-   },
-   body: JSON.stringify(credentials)
- })
+ axios.post(`/login`, { credentials })
  .then(res => {
   if (res.status === 200) {
-    console.log(res);
+    alert(res.data);
   } else {
     const error = new Error(res.error);
     throw error;

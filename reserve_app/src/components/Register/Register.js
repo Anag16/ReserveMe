@@ -7,8 +7,7 @@ async function registerUser(userData) {
   axios.post(`/register`, { userData })
   .then(res => {
     if (res.status === 200) {
-      console.log(res.data);
-      alert('User saved');
+      alert(res.data);
     } else {
       const error = new Error(res.error);
       throw error;
