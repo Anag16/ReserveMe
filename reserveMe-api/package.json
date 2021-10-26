@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "node ./server.js",
-    "reset": "psql -U postgres -d reservedb < ./db/schema/create.sql && psql -U postgres -d reservedb < ./db/schema/stores.sql"
+    "reset": "psql -U postgres -d reservedb < ./db/schema/create.sql && psql -U postgres -d reservedb < ./db/schema/seeds.sql"
   },
   "eslintConfig": {
     "extends": [
