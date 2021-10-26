@@ -8,7 +8,6 @@ import Reservation from './components/client/reservation';
 import Nav from './components/App/Nav';
 import Login from '../src/components/Login/Login';
 import Register from '../src/components/Register/Register';
-import useToken from '../src/components/App/useToken';
 
 class App extends Component {
   render() {
