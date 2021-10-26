@@ -6,6 +6,7 @@ module.exports = (db) => {
       `SELECT
         user_id,
         email,
+        password,
         fullname,
         phone,
         user_type

@@ -3,29 +3,37 @@ import PropTypes from 'prop-types';
 import './Login.css';
 
 async function loginUser(credentials) {
- return fetch('http://localhost:8001/login', {
+ return fetch('/login', {
    method: 'POST',
    headers: {
      'Content-Type': 'application/json'
    },
    body: JSON.stringify(credentials)
  })
-   .then(data => {
-    return data.json()
-   })
+ .then(res => {
+  if (res.status === 200) {
+    console.log(res);
+  } else {
+    const error = new Error(res.error);
+    throw error;
+  }
+ })
+  .catch(err => {
+    console.error(err);
+    alert('Error. Please try again');
+  });
 }
 
-export default function Login({ setToken }) {
-  const [username, setUserName] = useState();
+export default function Login({ }) {
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = async e => {
     e.preventDefault();
     const token = await loginUser({
-      username,
+      email,
       password
     });
-    setToken(token);
   }
 
   return(
@@ -33,8 +41,8 @@ export default function Login({ setToken }) {
       <h1>Please Log In</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          <p>Username</p>
-          <input type="text" onChange={e => setUserName(e.target.value)} />
+          <p>Email</p>
+          <input type="text" onChange={e => setEmail(e.target.value)} />
         </label>
         <label>
           <p>Password</p>
@@ -49,5 +57,5 @@ export default function Login({ setToken }) {
 }
 
 Login.propTypes = {
-  setToken: PropTypes.func.isRequired
+
 };

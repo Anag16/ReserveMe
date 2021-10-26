@@ -1,12 +1,24 @@
 const router = require("express").Router();
+const {checkPassword} = require('../../model/user')
 
-module.exports = () => {
+module.exports = db => {
   router.post("/", (req, res) => {
-    if(req.body.username == 'test2'){
-      res.send({
-        token: 'test123'
-      });
-    }
+    console.log("Data received");
+        console.log(`${req.body.email} : ${req.body.password}`);
+        //Get user id and pass it to users/maps/:userId
+        checkPassword(db, req.body.email, req.body.password)
+          .then(existingUser => {
+            if (existingUser) {
+              console.log('User found: ' + existingUser.user_id);
+              res.send({
+                token: 'test123'
+              });
+              // res.redirect(`/home`);
+            } else {
+              console.log('Invalid email/password');
+              res.redirect('/login');
+            }
+          });
   });
   
   return router;

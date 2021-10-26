@@ -14,6 +14,7 @@ const users = require("./routes/users");
 const reservations = require("./routes/reservations");
 const stores = require("./routes/stores");
 const login = require("./routes/user/login");
+const register = require("./routes/user/register");
 function read(file) {
   return new Promise((resolve, reject) => {
     fs.readFile(
@@ -41,7 +42,8 @@ module.exports = function application(
   app.use("/api", reservations(db));
   app.use("/api", stores(db));
 
-  app.use("/login", login()); 
+  app.use("/login", login(db)); 
+  app.use("/register", register(db)); 
 
 
   app.close = function() {
