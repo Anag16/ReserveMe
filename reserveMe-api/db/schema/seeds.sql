@@ -1,16 +1,16 @@
 INSERT INTO users
 (email, password, phone, fullname, user_type)
 VALUES
-('user1@email.com', '111-1111', 'User1 Name1', false),
-('user2@email.com', '222-2222', 'User2 Name2', false),
-('admin@email.com', '000-0000', 'Admin Astrator', true);
+('user1@email.com', 'password', '111-1111', 'User1 Name1', 'client'),
+('user2@email.com', 'password', '222-2222', 'User2 Name2', 'client'),
+('admin@email.com', 'password', '000-0000', 'Admin Astrator', 'admin');
 
 INSERT INTO reservations
 (reservation_date, start_time, end_time, user_id, store_id)
 VALUES
 ('12-25-2021', '12:00PM', '1:00PM', 1, 1),
 ('12-31-2021', '2:00PM', '3:00PM', 1, 2),
-('2-14-2022,' '11:00AM', '1:00PM', 3, 3),
+('2-14-2022', '11:00AM', '1:00PM', 3, 3),
 ('01-01-2022', '11:00PM', '12:00AM', 2, 4),
 ('07-01-2022', '6:00PM', '7:00PM', 3, 5);
 
