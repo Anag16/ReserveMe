@@ -20,10 +20,6 @@
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "server": "node ./server.js",
     "reset": "psql -U postgres -d reservedb < ./db/schema/create.sql && psql -U postgres -d reservedb < ./db/schema/seeds.sql"
   },
