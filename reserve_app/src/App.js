@@ -9,7 +9,7 @@ import Nav from './components/App/Nav';
 import Login from '../src/components/Login/Login';
 import Register from '../src/components/Register/Register';
 
-class App extends Component {
+class App extends Component {  
   render() {
     return (
       <div>
@@ -19,7 +19,7 @@ class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/admin/dashboard" component={Dashboard} />
-          <Route path="/stores" component={StoreList} />
+          <Route path="/list" component={StoreList} />
           <Route path="/store" component={Store} />
           <Route path="/reservation" component={Reservation} />
         </Switch>

@@ -4,9 +4,6 @@ function Nav () {
 
   return (
     <divcontainer>
-      <Link to="/">
-        Home 📅 
-      </Link>
       <Link to="/list">
         List of stores 🏠 
       </Link>
