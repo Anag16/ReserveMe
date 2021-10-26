@@ -4,7 +4,10 @@ function Nav () {
 
   return (
     <divcontainer>
-      <Link to="/list">
+      <Link to="/">
+        Home 📅 
+      </Link>
+      <Link to="/stores">
         List of stores 🏠 
       </Link>
       
@@ -14,6 +17,10 @@ function Nav () {
 
       <Link to="/reservation">
         Reservation 📅 
+      </Link>
+
+      <Link to="/admin/dashboard">
+        Dashboard 
       </Link>
 
       <Link to="/login">
