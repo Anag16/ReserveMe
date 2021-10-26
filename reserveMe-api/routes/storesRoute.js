@@ -1,7 +1,8 @@
 const router = require("express").Router();
+const withAuth = require('../middleware');
 
 module.exports = db => {
-  router.get("/stores", (request, response) => {
+  router.get("/stores", withAuth, (request, response) => {
     db.query(
       `
       SELECT

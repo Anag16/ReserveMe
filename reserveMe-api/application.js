@@ -5,11 +5,13 @@ const express = require("express");
 const bodyparser = require("body-parser");
 const helmet = require("helmet");
 const cors = require("cors");
+const cookieParser = require('cookie-parser');
+
 
 const app = express();
 
 const db = require("./db");
-
+const secret = process.env.TOKENSECRET || 'mysecret';
 const users = require("./routes/usersRoute");
 const reservations = require("./routes/reservationsRoute");
 const stores = require("./routes/storesRoute");
@@ -36,6 +38,7 @@ module.exports = function application(
 ) {
   app.use(cors());
   app.use(helmet());
+  app.use(cookieParser());
   app.use(bodyparser.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
@@ -44,8 +47,8 @@ module.exports = function application(
   app.use("/api", reservations(db));
   app.use("/api", stores(db));
 
-  app.use("/login", login(db)); 
-  app.use("/register", register(db)); 
+  app.use("/login", login(db, secret)); 
+  app.use("/register", register(db, secret)); 
 
 
   app.close = function() {

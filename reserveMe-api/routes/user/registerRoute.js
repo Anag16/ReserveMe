@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const {registerUser, checkPassword} = require('../../model/userModel')
+const {registerUser, checkPassword} = require('../../model/userModel');
+const withAuth = require('../../middleware');
 
-module.exports = db => {
+module.exports = (db, secret) => {
   router.post("/", (req, res) => {
     let email = req.body.userData.email;
     let password = req.body.userData.password;

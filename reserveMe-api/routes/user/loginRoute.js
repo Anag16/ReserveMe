@@ -1,17 +1,24 @@
 const router = require("express").Router();
-const {checkPassword} = require('../../model/userModel')
+const jwt = require('jsonwebtoken');
+const {checkPassword} = require('../../model/userModel');
+const withAuth = require('../../middleware');
 
-module.exports = db => {
+module.exports = (db, secret) => {
   router.post("/", (req, res) => {
     console.log("Data received");
-        console.log(`${req.body.credentials.email} : ${req.body.credentials.password}`);
-        checkPassword(db, req.body.credentials.email, req.body.credentials.password)
+        let email = req.body.credentials.email;
+        let password = req.body.credentials.password;
+        checkPassword(db, email, password)
           .then(existingUser => {
             if (existingUser) {
               console.log('User found: ' + existingUser.user_id);
-              res.send({
-                token: 'test123'
-              });
+                // Issue token
+                const payload = { email };
+                const token = jwt.sign(payload, secret, {
+                  expiresIn: '1h'
+                });
+                res.cookie('token', token, { httpOnly: true })
+                  .sendStatus(200);
             } else {
               console.log('Invalid email/password');
               res.send('Invalid email/password');
