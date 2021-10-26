@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {checkPassword} = require('../../model/user')
+const {checkPassword} = require('../../model/userModel')
 
 module.exports = db => {
   router.post("/", (req, res) => {

@@ -10,11 +10,11 @@ const app = express();
 
 const db = require("./db");
 
-const users = require("./routes/users");
-const reservations = require("./routes/reservations");
-const stores = require("./routes/stores");
-const login = require("./routes/user/login");
-const register = require("./routes/user/register");
+const users = require("./routes/usersRoute");
+const reservations = require("./routes/reservationsRoute");
+const stores = require("./routes/storesRoute");
+const login = require("./routes/user/loginRoute");
+const register = require("./routes/user/registerRoute");
 function read(file) {
   return new Promise((resolve, reject) => {
     fs.readFile(
@@ -37,6 +37,8 @@ module.exports = function application(
   app.use(cors());
   app.use(helmet());
   app.use(bodyparser.json());
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.json());
 
   app.use("/api", users(db));
   app.use("/api", reservations(db));

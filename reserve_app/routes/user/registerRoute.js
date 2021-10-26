@@ -1,10 +1,15 @@
 const router = require("express").Router();
-const {registerUser, checkPassword} = require('../../model/user')
+const {registerUser, checkPassword} = require('../../model/userModel')
 
 module.exports = db => {
   router.post("/", (req, res) => {
-    registerUser(db, req.body)
+    let email = req.body.userData.email;
+    let password = req.body.userData.password;
+    let name = req.body.userData.name;
+    let phone = req.body.userData.phone;
+    registerUser(db, email, password, phone, name)
     .then(() => {
+        //Send token
         res.send('New user added');
     })
     .catch(err => {

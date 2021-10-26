@@ -1,8 +1,8 @@
 // TODO
 
-const registerUser = function(db, body){
+const registerUser = function(db, email, password, phone, name){
     return db.query(
-        `INSERT INTO users (email, password, phone, fullname, user_type) VALUES ('${body.email}', '${body.password}', '${body.phone}', '${body.name}', 'client')`
+        `INSERT INTO users (email, password, phone, fullname, user_type) VALUES ('${email}', '${password}', '${phone}', '${name}', 'client')`
     )
 }
 
