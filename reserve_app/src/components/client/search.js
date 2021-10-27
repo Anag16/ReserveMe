@@ -15,7 +15,6 @@ export default function Search(props) {
         value={ searchQuery }
         onInput={event => setSearchQuery(event.target.value)}
         type="text"
-        id="store-search"
         placeholder="Search for stores"
         name="search"
         />
