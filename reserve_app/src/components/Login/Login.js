@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css';
+import { useHistory } from 'react-router-dom';
 
-async function loginUser(credentials) {
+async function loginUser(credentials, history) {
  axios.post(`/login`, { credentials })
  .then(res => {
   if (res.status === 200) {
-    alert(res.data);
+    console.log('Logging in...');
+    console.log('Redirecting');
+    history.push("/stores");
   } else {
     const error = new Error(res.error);
     throw error;
@@ -19,6 +22,7 @@ async function loginUser(credentials) {
 }
 
 export default function Login({ }) {
+  const history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -27,7 +31,7 @@ export default function Login({ }) {
     const token = await loginUser({
       email,
       password
-    });
+    }, history);
   }
 
   return(

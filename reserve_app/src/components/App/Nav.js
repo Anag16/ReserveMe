@@ -27,6 +27,10 @@ function Nav () {
         Login 📅 
       </Link>
 
+      <Link to="/logout">
+        Logout 📅 
+      </Link>
+
       <Link to="/register">
         Register 📅 
       </Link>

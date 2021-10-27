@@ -17,6 +17,7 @@ const users = require("./routes/usersRoute");
 const reservations = require("./routes/reservationsRoute");
 const stores = require("./routes/storesRoute");
 const login = require("./routes/user/loginRoute");
+const logout = require("./routes/user/logoutRoute");
 const register = require("./routes/user/registerRoute");
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -51,6 +52,7 @@ module.exports = function application(
   app.use("/api", stores(db));
 
   app.use("/login", login(db, secret)); 
+  app.use("/logout", logout()); 
   app.use("/register", register(db, secret)); 
 
 

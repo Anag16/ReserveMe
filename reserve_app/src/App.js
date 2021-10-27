@@ -8,7 +8,9 @@ import StoreList from './components/client/store-list';
 import Reservation from './components/client/reservation';
 import Nav from './components/App/Nav';
 import Login from '../src/components/Login/Login';
+import Logout from '../src/components/Login/Logout';
 import Register from '../src/components/Register/Register';
+import { useHistory } from 'react-router-dom';
 
 class App extends Component {  
   render() {
@@ -18,6 +20,7 @@ class App extends Component {
         <Switch>
           {/* <Route path="/" exact component={Home} /> */}
           <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
           <Route path="/register" component={Register} />
           <Route path="/admin/dashboard" component={AuthComponent(Dashboard)} />
           <Route path="/stores" component={AuthComponent(StoreList)} />
