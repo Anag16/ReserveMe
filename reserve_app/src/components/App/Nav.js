@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie';
+import { NavLink } from "react-router-dom";
 
 function Nav () {
   const cookies = new Cookies();
@@ -12,35 +13,32 @@ function Nav () {
 
   return (
     <divcontainer>
-      <Link to="/">
-        Home 📅 
-      </Link>
-
-       <Link to="/stores">List of stores 🏠</Link>
-
-      <Link to="/store">
+      <NavLink to="/">
+        Home 🏠 
+      </NavLink>
+      <NavLink to="/stores">
+        List of stores 🏘 
+      </NavLink>
+      
+      <NavLink to="/store">
         Store 🏗 
-      </Link>
+      </NavLink>
 
-      <Link to="/reservation">
+      <NavLink to="/reservation">
         Reservation 📅 
-      </Link>
+      </NavLink>
 
-      <Link to="/admin/dashboard">
-        Dashboard 
-      </Link>
+      <NavLink to="/admin/dashboard">
+        Dashboard 🐗 
+      </NavLink>
 
-      <Link to="/login">
-        Login 📅 
-      </Link>
+      <NavLink to="/login">
+        Login 🚪 
+      </NavLink>
 
-      <Link to="/logout">
-        Logout 📅 
-      </Link>
-
-      <Link to="/register">
-        Register 📅 
-      </Link>
+      <NavLink to="/register">
+        Register ✏ 
+      </NavLink>
     </divcontainer>
   )
 }
