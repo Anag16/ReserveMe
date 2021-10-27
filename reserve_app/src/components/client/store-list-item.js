@@ -1,4 +1,4 @@
-// import * as React from 'react';
+import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -27,7 +27,8 @@ export default function StoreListItem(props) {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Details
+          <Link to="/store" style={{ textDecoration: 'none' }}>Details</Link>
+          {/* Details */}
         </Button>
       </CardActions>
     </Card>
