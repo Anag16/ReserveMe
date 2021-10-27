@@ -36,6 +36,10 @@ function Nav () {
         Login 🚪 
       </NavLink>
 
+      <NavLink to="/logout">
+        Logout 📅 
+      </NavLink>
+
       <NavLink to="/register">
         Register ✏ 
       </NavLink>
