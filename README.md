@@ -12,3 +12,6 @@ An app/site to reserve a spot in various shops and establishments (because of th
 - Node.js
 - Postgres
 - Node-sass
+- React-dom
+- Material UI
+- Axios
