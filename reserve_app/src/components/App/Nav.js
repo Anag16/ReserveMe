@@ -2,23 +2,27 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie';
 import { NavLink } from "react-router-dom";
+import useCookie from "../useCookie";
 
 function Nav () {
   const cookies = new Cookies();
+  const [cookie, updateCookie] = useCookie('token');
+  console.log(`Current cookie is: ${cookie}`);
 //   let [authToken, setToken] = useState(0); 
 
-//   authToken = cookies.get('token');
   
-//  let storeList = authToken ? <Link to="/stores">List of stores 🏠</Link> : '';
+    let storeList = cookie ? <NavLink to="/stores">List of stores 🏠</NavLink> : '';
 
   return (
     <divcontainer>
       <NavLink to="/">
         Home 🏠 
       </NavLink>
-      <NavLink to="/stores">
+
+      {storeList}
+      {/* <NavLink to="/stores">
         List of stores 🏘 
-      </NavLink>
+      </NavLink> */}
       
       <NavLink to="/store">
         Store 🏗 
@@ -32,11 +36,13 @@ function Nav () {
         Dashboard 🐗 
       </NavLink>
 
-      <NavLink to="/login">
+      <NavLink to="/login" onClick={() => { updateCookie(true); }}>
         Login 🚪 
       </NavLink>
 
-      <NavLink to="/logout">
+      <NavLink to="/logout"  onClick={() => {
+          updateCookie(null);
+        }}>
         Logout 📅 
       </NavLink>
 

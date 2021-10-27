@@ -8,7 +8,8 @@ const getItem = function (key) {
 }
 
 const setItem = (key, value) => {
-
+  const cookies = new Cookies();
+  cookies.set(key, value);
 };
 
 /**
@@ -21,8 +22,16 @@ const useCookie = (key) => {
   const [cookie, setCookie] = useState(getCookie());
 
   const updateCookie = (value) => {
-    setCookie(value);
-    setItem(key, value);
+    //Loggin in
+    if (value == true){
+      setCookie(getItem(key));
+      setItem(key, getItem(key));
+    }
+    else{
+      setCookie(value);
+      getItem(key, value);
+    }
+
   };
 
   return [cookie, updateCookie];
