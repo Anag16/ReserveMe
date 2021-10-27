@@ -1,35 +1,35 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Nav () {
 
   return (
     <divcontainer>
-      <Link to="/">
-        Home 📅 
-      </Link>
-      <Link to="/stores">
-        List of stores 🏠 
-      </Link>
+      <NavLink to="/">
+        Home 🏠 
+      </NavLink>
+      <NavLink to="/stores">
+        List of stores 🏘 
+      </NavLink>
       
-      <Link to="/store">
+      <NavLink to="/store">
         Store 🏗 
-      </Link>
+      </NavLink>
 
-      <Link to="/reservation">
+      <NavLink to="/reservation">
         Reservation 📅 
-      </Link>
+      </NavLink>
 
-      <Link to="/admin/dashboard">
-        Dashboard 
-      </Link>
+      <NavLink to="/admin/dashboard">
+        Dashboard 🐗 
+      </NavLink>
 
-      <Link to="/login">
-        Login 📅 
-      </Link>
+      <NavLink to="/login">
+        Login 🚪 
+      </NavLink>
 
-      <Link to="/register">
-        Register 📅 
-      </Link>
+      <NavLink to="/register">
+        Register ✏ 
+      </NavLink>
     </divcontainer>
   )
 }
