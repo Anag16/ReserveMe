@@ -21,7 +21,7 @@ async function registerUser(userData) {
 
 }
 
-export default function Register({}) {
+export default function Register() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [name, setName] = useState();
@@ -29,7 +29,7 @@ export default function Register({}) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const token = await registerUser({
+    await registerUser({
       email,
       password,
       name,

@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
-import { Link, BrowserRouter, Route, Switch } from 'react-router-dom';
+import {Route, Switch } from 'react-router-dom';
 import AuthComponent from '../src/components/AuthComponent'
 import Dashboard from '../src/components/admin/dashboard';
 import Store from '../src/components/client/store';
@@ -10,7 +10,6 @@ import Nav from './components/App/Nav';
 import Login from '../src/components/Login/Login';
 import Logout from '../src/components/Login/Logout';
 import Register from '../src/components/Register/Register';
-import { useHistory } from 'react-router-dom';
 
 class App extends Component {  
   render() {

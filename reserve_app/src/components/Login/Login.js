@@ -22,14 +22,14 @@ async function loginUser(credentials, history) {
   });
 }
 
-export default function Login({ }) {
+export default function Login() {
   const history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const token = await loginUser({
+    await loginUser({
       email,
       password
     }, history);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Cookies from 'universal-cookie';
 
 const getItem = function (key) {
@@ -23,7 +23,7 @@ const useCookie = (key) => {
 
   const updateCookie = (value) => {
     //Loggin in
-    if (value == true){
+    if (value === true){
       setCookie(getItem(key));
       setItem(key, getItem(key));
     }

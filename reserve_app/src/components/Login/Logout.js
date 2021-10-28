@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import './Logout.css';
 import { useHistory } from 'react-router-dom';
 
 
-export default function Logout({ }) {
+export default function Logout() {
   const history = useHistory();
 
   const logout = async e => {
