@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
 export default function StoreListItem(props) {
-  const { name, description, img } = props;
+  const { store_id, name, description, img } = props;
 
   return (
     <Card sx={{ maxWidth: 325 }}>
@@ -27,7 +27,7 @@ export default function StoreListItem(props) {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          <Link to="/store" style={{ textDecoration: 'none' }}>Details</Link>
+          <Link to={`/store/${store_id}`} style={{ textDecoration: 'none' }}>Details</Link>
           {/* Details */}
         </Button>
       </CardActions>

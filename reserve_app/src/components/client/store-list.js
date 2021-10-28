@@ -60,6 +60,7 @@ export default function StoreList(props) {
             // <li key={store.id}> {store.name}</ li>
             <StoreListItem
               key={store.store_id}
+              store_id = {store.store_id}
               name={store.name}
               desciption={store.desciption}
               img={store.image}
