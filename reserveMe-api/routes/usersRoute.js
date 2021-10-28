@@ -8,9 +8,9 @@ module.exports = (db) => {
         user_id,
         email,
         password,
-        fullname,
+        name,
         phone,
-        user_type
+        is_admin
       FROM users`
     ).then(({ rows: users }) => {
       response.json(
