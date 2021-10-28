@@ -7,6 +7,7 @@ module.exports = db => {
       `
       SELECT
       store_id,
+      name,
       description,
       image,
       location,
@@ -18,8 +19,8 @@ module.exports = db => {
       admin_id
     FROM stores
     `
-    ).then(({ rows: days }) => {
-      response.json(days);
+    ).then(({ rows: stores }) => {
+      response.json(stores);
     });
   });
 

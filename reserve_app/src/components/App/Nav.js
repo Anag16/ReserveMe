@@ -3,7 +3,6 @@ import useCookie from "../useCookie";
 
 function Nav () {
   const [cookie, updateCookie] = useCookie('token');
-  console.log(`Current cookie is: ${cookie}`);
 //   let [authToken, setToken] = useState(0); 
 
     let homePage = cookie ?  <NavLink to="/">Home 🏠 </NavLink>: '';
@@ -16,7 +15,7 @@ function Nav () {
     let register = !cookie ?  <NavLink to="/register">Register ✏ </NavLink>: '';
 
   return (
-    <divcontainer>
+    <div>
      
       {homePage}
       {storeList}
@@ -26,7 +25,7 @@ function Nav () {
       {login}
       {logout}
       {register}      
-    </divcontainer>
+    </div>
   )
 }
 
