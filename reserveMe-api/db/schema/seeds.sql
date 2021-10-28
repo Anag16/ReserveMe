@@ -8,11 +8,12 @@ VALUES
 INSERT INTO reservations
 (reservation_date, start_time, end_time, user_id, store_id)
 VALUES
-('12-25-2021', '12:00PM', '1:00PM', 1, 1),
-('12-31-2021', '2:00PM', '3:00PM', 1, 2),
-('2-14-2022', '11:00AM', '1:00PM', 3, 3),
-('01-01-2022', '11:00PM', '12:00AM', 2, 4),
-('07-01-2022', '6:00PM', '7:00PM', 3, 5);
+('2021-12-25', '12:00PM', '1:00PM', 1, 1),
+('2021-06-13', '2:00PM', '3:00PM', 1, 2),
+('2023-12-05', '11:00AM', '1:00PM', 3, 3),
+('2021-12-05', '11:00PM', '12:00AM', 2, 4),
+('2025-12-05', '6:00PM', '7:00PM', 3, 5);
+
 
 INSERT INTO stores
 (name, description, image, location, capacity, safety_measures, dates, opening_hour, closing_hour, admin_id)

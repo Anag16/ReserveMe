@@ -14,7 +14,7 @@ CREATE TABLE users (
 
 CREATE TABLE reservations (
   reservation_id SERIAL PRIMARY KEY NOT NULL,
-  reservation_date VARCHAR(255) NOT NULL,
+  reservation_date DATE NOT NULL,
   start_time VARCHAR(255) NOT NULL,
   end_time VARCHAR(255) NOT NULL,
   user_id VARCHAR(255) NOT NULL,
@@ -34,3 +34,4 @@ CREATE TABLE stores (
   closing_hour VARCHAR(255) NOT NULL,
   admin_id VARCHAR(255) NOT NULL
 );
+

@@ -7,14 +7,13 @@ module.exports = db => {
       `SELECT *
       FROM reservations`
     ).then(({ rows: reservations }) => {
-      response.json(
-        reservations.reduce(
-          (previous, current) => ({ ...previous, [current.id]: current }),
-          {}
-        )
-      );
+      response.json(reservations);
     });
   })
+  // reservations.reduce(
+  //   (previous, current) => ({ ...previous, [current.id]: current }),
+  //   {}
+  // )
 
   router.put("/reservations/:id", (request, response) => {
     const { reservation_date, start_time, end_time } = request.body.reservation;
