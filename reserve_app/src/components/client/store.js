@@ -9,7 +9,7 @@ export default function Store(props) {
   const { store_id } = location.state;
   const [isLoading, setLoading] = useState(true);
   const [store, setStore] = useState();
-  const [reservationDay, onDayChange] = useState(new Date());
+  const [reservationDay, onDayChange] = useState(new Date(Date.now()));
 
   useEffect(() => {
     axios.get(`/api/stores/${store_id}`)
@@ -33,6 +33,7 @@ export default function Store(props) {
   }
 
   let storeObj = store[0];
+
   return (
     <div className="Store">
       <h1>Store</h1>
@@ -44,6 +45,8 @@ export default function Store(props) {
         maxDate = {new Date(Date.now() + 12096e5)}
         minDate = {new Date(Date.now())}
       />
+
+      <p>Picked day {reservationDay.toISOString().slice(0, 19).replace('T', ' ')}</p>
     </div>
   )
 }
