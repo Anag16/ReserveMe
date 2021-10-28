@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import Calendar from 'react-calendar';
 
 export default function Store(props) {
 
@@ -8,6 +9,7 @@ export default function Store(props) {
   const { store_id } = location.state;
   const [isLoading, setLoading] = useState(true);
   const [store, setStore] = useState();
+  const [reservationDay, onDayChange] = useState(new Date());
 
   useEffect(() => {
     axios.get(`/api/stores/${store_id}`)
@@ -35,6 +37,13 @@ export default function Store(props) {
     <div className="Store">
       <h1>Store</h1>
       <p>This store's name is: {storeObj.name}</p>
+
+      <Calendar
+        onChange={onDayChange}
+        value={reservationDay}
+        maxDate = {new Date(Date.now() + 12096e5)}
+        minDate = {new Date(Date.now())}
+      />
     </div>
   )
 }
