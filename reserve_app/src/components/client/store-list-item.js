@@ -27,7 +27,7 @@ export default function StoreListItem(props) {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          <Link to={`/store/${store_id}`} style={{ textDecoration: 'none' }}>Details</Link>
+          <Link to={{pathname: `/store/${store_id}`, state:{store_id } }} style={{ textDecoration: 'none' }}>Details</Link>
           {/* Details */}
         </Button>
       </CardActions>
