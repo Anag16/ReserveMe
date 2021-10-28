@@ -1,54 +1,31 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import Cookies from 'universal-cookie';
 import { NavLink } from "react-router-dom";
 import useCookie from "../useCookie";
 
 function Nav () {
-  const cookies = new Cookies();
   const [cookie, updateCookie] = useCookie('token');
   console.log(`Current cookie is: ${cookie}`);
 //   let [authToken, setToken] = useState(0); 
 
-  
+    let homePage = cookie ?  <NavLink to="/">Home 🏠 </NavLink>: '';
     let storeList = cookie ? <NavLink to="/stores">List of stores 🏠</NavLink> : '';
+    let store = cookie ? <NavLink to="/store">Store 🏗 </NavLink> : '';
+    let reservation = cookie ?  <NavLink to="/reservation">Reservation 📅 </NavLink> : '';
+    let dashboard = cookie ?  <NavLink to="/admin/dashboard">Dashboard 🐗 </NavLink> : '';
+    let login = !cookie ?   <NavLink to="/login">Login 🚪 </NavLink>: '';
+    let logout = cookie ?  <NavLink to="/logout"  onClick={() => {updateCookie(null);}}>Logout 📅 </NavLink>: '';
+    let register = !cookie ?  <NavLink to="/register">Register ✏ </NavLink>: '';
 
   return (
     <divcontainer>
-      <NavLink to="/">
-        Home 🏠 
-      </NavLink>
-
+     
+      {homePage}
       {storeList}
-      {/* <NavLink to="/stores">
-        List of stores 🏘 
-      </NavLink> */}
-      
-      <NavLink to="/store">
-        Store 🏗 
-      </NavLink>
-
-      <NavLink to="/reservation">
-        Reservation 📅 
-      </NavLink>
-
-      <NavLink to="/admin/dashboard">
-        Dashboard 🐗 
-      </NavLink>
-
-      <NavLink to="/login" onClick={() => { updateCookie(true); }}>
-        Login 🚪 
-      </NavLink>
-
-      <NavLink to="/logout"  onClick={() => {
-          updateCookie(null);
-        }}>
-        Logout 📅 
-      </NavLink>
-
-      <NavLink to="/register">
-        Register ✏ 
-      </NavLink>
+      {store}
+      {reservation}
+      {dashboard}
+      {login}
+      {logout}
+      {register}      
     </divcontainer>
   )
 }

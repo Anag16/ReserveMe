@@ -10,6 +10,7 @@ async function loginUser(credentials, history) {
     console.log('Logging in...');
     console.log('Redirecting');
     history.push("/stores");
+    window.location.reload(true);
   } else {
     const error = new Error(res.error);
     throw error;
