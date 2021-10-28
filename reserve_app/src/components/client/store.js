@@ -2,6 +2,8 @@ import { useLocation } from 'react-router-dom'
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Calendar from 'react-calendar';
+import useCookie from "../useCookie";
+import DayReservationItem from "./day-reservations-item";
 
 export default function Store(props) {
 
@@ -9,6 +11,8 @@ export default function Store(props) {
   const { store_id } = location.state;
   const [isLoading, setLoading] = useState(true);
   const [store, setStore] = useState();
+  const [user_id] = useCookie('user_id');
+  const [user_fullname] = useCookie('user_fullname');
   const [reservationDay, onDayChange] = useState(new Date(Date.now()));
 
   useEffect(() => {
@@ -38,6 +42,8 @@ export default function Store(props) {
     <div className="Store">
       <h1>Store</h1>
       <p>This store's name is: {storeObj.name}</p>
+      {/* <p>This user id is : {user_id}</p>
+      <p>This user fullname is : {user_fullname}</p> */}
 
       <Calendar
         onChange={onDayChange}
@@ -46,7 +52,11 @@ export default function Store(props) {
         minDate = {new Date(Date.now())}
       />
 
-      <p>Picked day {reservationDay.toISOString().slice(0, 19).replace('T', ' ')}</p>
+      <DayReservationItem 
+        store_id = {storeObj.store_id}
+        user_id = {user_id}
+        dateString = {reservationDay.toISOString().slice(0, 19).replace('T', ' ')}
+      ></DayReservationItem>
     </div>
   )
 }

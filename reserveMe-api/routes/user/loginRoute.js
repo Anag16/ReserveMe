@@ -17,8 +17,11 @@ module.exports = (db, secret) => {
                 const token = jwt.sign(payload, secret, {
                   expiresIn: '1h'
                 });
-                res.cookie('token', token, { httpOnly: false, sameSite: 'lax' })
+                res.cookie('token', token, { httpOnly: false, sameSite: 'lax' });
+                res.cookie('user_id', existingUser.user_id, { httpOnly: false, sameSite: 'lax' });
+                res.cookie('user_fullname', existingUser.fullname, { httpOnly: false, sameSite: 'lax' })
                   .sendStatus(200);
+
             } else {
               console.log('Invalid email/password');
               res.send('Invalid email/password');
