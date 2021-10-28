@@ -7,6 +7,8 @@ module.exports = db => {
       `
       SELECT
       store_id,
+      description,
+      image,
       location,
       capacity,
       safety_measures,

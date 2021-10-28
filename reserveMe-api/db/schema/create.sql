@@ -24,6 +24,8 @@ CREATE TABLE reservations (
 CREATE TABLE stores (
   store_id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
+  description TEXT,
+  image VARCHAR(255),
   location VARCHAR(255) NOT NULL,
   capacity VARCHAR(255) NOT NULL,
   safety_measures VARCHAR(255) NOT NULL,
