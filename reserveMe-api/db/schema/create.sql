@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS reservations CASCADE;
 DROP TABLE IF EXISTS stores CASCADE;
+DROP TABLE IF EXISTS reservations CASCADE;
 
 
 CREATE TABLE users (
@@ -10,17 +10,6 @@ CREATE TABLE users (
   phone VARCHAR(255) NOT NULL,
   name VARCHAR(255) NOT NULL,
   is_admin BOOLEAN DEFAULT FALSE
-);
-
-CREATE TABLE reservations (
-  reservation_id SERIAL PRIMARY KEY NOT NULL,
-  reservation_date DATE NOT NULL,
-  start_hour INTEGER NOT NULL,
-  start_minutes INTEGER NOT NULL,
-  end_hour INTEGER NOT NULL,
-  end_minutes INTEGER NOT NULL,
-  user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
-  store_id INTEGER REFERENCES stores(store_id) ON DELETE CASCADE
 );
 
 CREATE TABLE stores (
@@ -36,3 +25,14 @@ CREATE TABLE stores (
   admin_id INTEGER NOT NULL
 );
 
+
+CREATE TABLE reservations (
+  reservation_id SERIAL PRIMARY KEY NOT NULL,
+  reservation_date DATE NOT NULL,
+  start_hour INTEGER NOT NULL,
+  start_minutes INTEGER NOT NULL,
+  end_hour INTEGER NOT NULL,
+  end_minutes INTEGER NOT NULL,
+  user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
+  store_id INTEGER REFERENCES stores(store_id) ON DELETE CASCADE
+);
