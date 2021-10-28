@@ -8,17 +8,19 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
   phone VARCHAR(255) NOT NULL,
-  fullname VARCHAR(255) NOT NULL,
-  user_type VARCHAR(255) NOT NULL
+  name VARCHAR(255) NOT NULL,
+  is_admin BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE reservations (
   reservation_id SERIAL PRIMARY KEY NOT NULL,
   reservation_date DATE NOT NULL,
-  start_time VARCHAR(255) NOT NULL,
-  end_time VARCHAR(255) NOT NULL,
-  user_id VARCHAR(255) NOT NULL,
-  store_id VARCHAR(255) NOT NULL
+  start_hour INTEGER NOT NULL,
+  start_minutes INTEGER NOT NULL,
+  end_hour INTEGER NOT NULL,
+  end_minutes INTEGER NOT NULL,
+  user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
+  store_id INTEGER REFERENCES stores(store_id) ON DELETE CASCADE
 );
 
 CREATE TABLE stores (
@@ -27,11 +29,10 @@ CREATE TABLE stores (
   description TEXT,
   image VARCHAR(255),
   location VARCHAR(255) NOT NULL,
-  capacity VARCHAR(255) NOT NULL,
-  safety_measures VARCHAR(255) NOT NULL,
-  dates VARCHAR(255) NOT NULL,
-  opening_hour VARCHAR(255) NOT NULL,
-  closing_hour VARCHAR(255) NOT NULL,
-  admin_id VARCHAR(255) NOT NULL
+  capacity INTEGER NOT NULL,
+  safety_measures TEXT,
+  opening_hour INTEGER NOT NULL,
+  closing_hour INTEGER NOT NULL,
+  admin_id INTEGER NOT NULL
 );
 
