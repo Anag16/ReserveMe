@@ -21,7 +21,7 @@
   },
   "scripts": {
     "server": "node ./server.js",
-    "reset": "psql -U postgres -d reservedb < ./db/schema/create.sql && psql -U postgres -d reservedb < ./db/schema/seeds.sql"
+    "reset": "psql -d reservedb < ./db/schema/create.sql && psql -d reservedb < ./db/schema/seeds.sql"
   },
   "eslintConfig": {
     "extends": [
