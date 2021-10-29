@@ -6,8 +6,8 @@ function Nav () {
 //   let [authToken, setToken] = useState(0); 
 
     let homePage = cookie ?  <NavLink to="/">Home 🏠 </NavLink>: '';
-    let storeList = cookie ? <NavLink to="/stores">List of stores 🏠</NavLink> : '';
-    let store = cookie ? <NavLink to="/store">Store 🏗 </NavLink> : '';
+    let storeList = <NavLink to="/stores">List of stores 🏠</NavLink>;
+    // let store = cookie ? <NavLink to="/store">Store 🏗 </NavLink> : '';
     let reservation = cookie ?  <NavLink to="/reservation">Reservation 📅 </NavLink> : '';
     let dashboard = cookie ?  <NavLink to="/admin/dashboard">Dashboard 🐗 </NavLink> : '';
     let login = !cookie ?   <NavLink to="/login">Login 🚪 </NavLink>: '';
@@ -19,7 +19,7 @@ function Nav () {
      
       {homePage}
       {storeList}
-      {store}
+      {/* {store} */}
       {reservation}
       {dashboard}
       {login}
