@@ -8,7 +8,7 @@ import axios from "axios";
 import { CalendarCreateModal } from './calendarHelper';
 
 export default function Calendar(props) {
-  // const { store_id, user_id, dateString } = props;
+  const { store_id, user_id, dateString } = props;
   const [isLoading, setLoading] = useState(true);
   const [reservations, setReservations] = useState({})
   const [modalState, setModalState] = useState({ openModal: false });
@@ -44,11 +44,9 @@ export default function Calendar(props) {
           setReservations(resultArray);
           setLoading(false);
 
-          // grab opening and closing hours from stores
-          // console.log(res[1].data)
+          // grab opening and closing hours from stores - if displaying them to individual stores, iterate and put them as the slot min and max time for the calendar
           let hoursObj = {}
           for (const obj of res[1].data){
-            // console.log(res[1].data)
             const openHour = obj.opening_hour;
             const closingHour = obj.closing_hour;
             hoursObj = {
@@ -57,7 +55,6 @@ export default function Calendar(props) {
               slotMinTime: `${openHour}:00:00`,
               slotMaxTime: `${closingHour}:00:00`
             }
-            // console.log("hoursObj:", hoursObj)
           }
           setStoreHours(hoursObj);
 

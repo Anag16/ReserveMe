@@ -9,25 +9,29 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateTimePicker from '@mui/lab/DateTimePicker';
 import Stack from '@mui/material/Stack';
+import axios from 'axios';
 
 function CalendarCreateModal(props) {
   const { openModal, onCloseModal, value, setValue } = props;
 
   function submitNewReservation() {
     // Fri Dec 03 2021 13:15:11 GMT-0500 (Eastern Standard Time) --> format returned by DatePicker selector --> object ? 
-    const fullDate = `${value.getFullYear()}-${value.getMonth()}-${value.getDate()}`;
+    const fullDate = `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`;
     
     const reservationReturnObj = {
       reservation_date: fullDate,
       start_hour: value.getHours(),
       start_minutes: value.getMinutes(),
-      end_hour: value.getHours(),
-      end_minutes: value.getMinutes() + 15
+      end_hour: value.getMinutes() < 45 ? value.getHours() : value.getHours() +1,
+
+      end_minutes: (value.getMinutes() + 15) > 60 ? (value.getMinutes() - 45) : (value.getMinutes() +15)
     }
 
-    console.log(reservationReturnObj)
-
     onCloseModal();
+    return axios.put(`api/reservations/${store_id}/${fullDate}`, {reservationReturnObj}).then(() => {
+      
+    })
+
   }
 
   return (
@@ -55,6 +59,7 @@ function CalendarCreateModal(props) {
               value={value}
               onChange={(newValue) => {
                 setValue(newValue);
+                // console.log("inside datetimepicker:", newValue)
               }}
               minDate={new Date()}
               minTime={new Date(0, 0, 0, 7)}
