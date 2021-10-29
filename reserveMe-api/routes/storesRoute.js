@@ -13,7 +13,6 @@ module.exports = db => {
       location,
       capacity,
       safety_measures,
-      dates,
       opening_hour,
       closing_hour,
       admin_id
@@ -36,7 +35,6 @@ module.exports = db => {
       location,
       capacity,
       safety_measures,
-      dates,
       opening_hour,
       closing_hour,
       admin_id
