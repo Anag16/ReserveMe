@@ -45,12 +45,12 @@ export default function Store(props) {
       {/* <p>This user id is : {user_id}</p>
       <p>This user fullname is : {user_fullname}</p> */}
 
-      <Calendar
+      {/* <Calendar
         onChange={onDayChange}
         value={reservationDay}
         maxDate = {new Date(Date.now() + 12096e5)}
         minDate = {new Date(Date.now())}
-      />
+      /> */}
 
       <DayReservationItem 
         store_id = {storeObj.store_id}

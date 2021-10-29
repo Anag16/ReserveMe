@@ -6,6 +6,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import axios from "axios";
 
 export default function Calendar(props) {
+  const { store_id, user_id, dateString } = props;
   const [isLoading, setLoading] = useState(true);
   const [reservations, setReservations] = useState({})
 
