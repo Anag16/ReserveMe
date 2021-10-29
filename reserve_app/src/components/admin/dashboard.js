@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export default function Dashboard(props) {
   const [storeName, setStoreName] = useState(props.storeName || "");
   const [storeDescription, setStoreDescription] = useState(props.storeDescription || "");
+  const [storeLocation, setStoreLocation] = useState(props.storeLocation || "");
   const [safetyMeasures, setSafetyMeasures] = useState(props.safetyMeasures || "");
 
   const cancel = () => {
@@ -39,7 +40,7 @@ export default function Dashboard(props) {
             className="store-name"
             name="name"
             type="text"
-            placeholder="Enter store Name"
+            placeholder="Enter store name"
             value={storeName}
             onChange={(event) => setStoreName(event.target.value)}
             data-testid="store-name-input"
@@ -59,11 +60,25 @@ export default function Dashboard(props) {
         <section className="store-image">
           Store image
         </section>
-        <section className="store-location">
-          Store location
+        <section className="location">
+          <input
+            className="store-location"
+            name="name"
+            type="text"
+            placeholder="Enter store location"
+            value={storeLocation}
+            onChange={(event) => setStoreLocation(event.target.value)}
+            data-testid="store-location-input"
+          />
         </section>
         <section className="store-capacity">
           Store capacity
+        </section>
+        <section className="customer-count">
+          Customer count
+        </section>
+        <section className="reservation-capacity">
+          reservation capacity
         </section>
         <section className="safety-measures">
           <input

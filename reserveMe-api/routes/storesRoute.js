@@ -7,9 +7,10 @@ module.exports = db => {
     db.query(
       `
       SELECT
-  
+      store_id,
+      name,
       description,
-      
+      image,
       location,
       capacity,
       customer_count,
