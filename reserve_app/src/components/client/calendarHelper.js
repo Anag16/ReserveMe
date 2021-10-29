@@ -13,6 +13,23 @@ import Stack from '@mui/material/Stack';
 function CalendarCreateModal(props) {
   const { openModal, onCloseModal, value, setValue } = props;
 
+  function submitNewReservation() {
+    // Fri Dec 03 2021 13:15:11 GMT-0500 (Eastern Standard Time) --> format returned by DatePicker selector --> object ? 
+    const fullDate = `${value.getFullYear()}-${value.getMonth()}-${value.getDate()}`;
+    
+    const reservationReturnObj = {
+      reservation_date: fullDate,
+      start_hour: value.getHours(),
+      start_minutes: value.getMinutes(),
+      end_hour: value.getHours(),
+      end_minutes: value.getMinutes() + 15
+    }
+
+    console.log(reservationReturnObj)
+
+    onCloseModal();
+  }
+
   return (
     <Dialog open={openModal} onClose={onCloseModal}>
       <DialogTitle>Create reservation</DialogTitle>
@@ -39,23 +56,19 @@ function CalendarCreateModal(props) {
               onChange={(newValue) => {
                 setValue(newValue);
               }}
-              minDate={new Date(value)}
-              minTime={new Date(0, 0, 0, 10)}
-              maxTime={new Date(0, 0, 0, 19, 45)}
+              minDate={new Date()}
+              minTime={new Date(0, 0, 0, 7)}
+              maxTime={new Date(0, 0, 0, 20)}
             />
           </Stack>
         </LocalizationProvider>
       </DialogContent>
       <DialogActions>
         <Button onClick={onCloseModal}>Cancel</Button>
-        <Button onClick={onCloseModal}>Submit</Button>
+        <Button onClick={submitNewReservation}>Submit</Button>
       </DialogActions>
     </Dialog>
   );
-}
-
-function submitNewReservation() {
-  
 }
 
 export {

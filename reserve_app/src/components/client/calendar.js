@@ -13,16 +13,20 @@ export default function Calendar(props) {
   const [reservations, setReservations] = useState({})
   const [modalState, setModalState] = useState({ openModal: false });
   const [selectorValue, setSelectorValue] = useState(new Date());
+  const [storeHours, setStoreHours] = useState({})
 
   useEffect(() => {
-    axios.get(`/api/reservations`)
+    const axiosReq1 = axios.get(`/api/reservations`)
+    const axiosReq2 = axios.get(`/api/stores`)
+
+    axios.all([axiosReq1, axiosReq2])
+
       .then(res => {
-        if (res.status === 200) {
+        if (res[0].status === 200 && res[1].status) {
           let resultArray = [];
           let calendarObj = {};
-          // for loop through res.data and extract values to remap
-          for (const obj of res.data) {
-
+          // for loop through reservation response data and extract values to remap
+          for (const obj of res[0].data) {
             let startTime = new Date(obj.reservation_date);
             startTime.setHours(obj.start_hour);
             startTime.setMinutes(obj.start_minutes);
@@ -37,9 +41,25 @@ export default function Calendar(props) {
             };
             resultArray.push(calendarObj);
           }
-
           setReservations(resultArray);
           setLoading(false);
+
+          // grab opening and closing hours from stores
+          // console.log(res[1].data)
+          let hoursObj = {}
+          for (const obj of res[1].data){
+            // console.log(res[1].data)
+            const openHour = obj.opening_hour;
+            const closingHour = obj.closing_hour;
+            hoursObj = {
+              // slotMinTime="07:00:00",
+              // slotMaxTime="21:00:00"
+              slotMinTime: `${openHour}:00:00`,
+              slotMaxTime: `${closingHour}:00:00`
+            }
+            // console.log("hoursObj:", hoursObj)
+          }
+          setStoreHours(hoursObj);
 
         } else {
           const error = new Error(res.error);
@@ -50,7 +70,7 @@ export default function Calendar(props) {
         console.error(err);
         alert('Error. Please try again');
       });
-  }, [reservations]);
+  }, []);
 
 
   if (isLoading) {
@@ -58,8 +78,10 @@ export default function Calendar(props) {
   }
 
   // modal states
-  const handleOpenModal = () => {
+  const handleOpenModal = (e) => {
     setModalState({ openModal: true });
+    setSelectorValue(e.dateStr);
+    console.log("!! sel value", selectorValue);
   };
 
   const handleClose = () => {
@@ -75,10 +97,12 @@ export default function Calendar(props) {
         headerToolbar={{ center: 'dayGridMonth,timeGridWeek,timeGridDay' }}
         events={reservations}
         nowIndicator
-        dateClick={handleOpenModal}
+        dateClick={(e) => handleOpenModal(e)}
         //  (e) => console.log(e.dateStr)
         height="auto"
         allDaySlot={false}
+        slotMinTime="07:00:00"
+        slotMaxTime="21:00:00"
       />
       <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue} />
     </>
