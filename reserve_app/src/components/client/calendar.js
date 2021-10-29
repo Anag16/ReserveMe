@@ -14,21 +14,36 @@ export default function Calendar(props) {
     .then(res => {
      if (res.status === 200) {
        setLoading(false);
-      //  console.log(res.data[0]);
+       console.log(res.data);
       let resultArray = [];
-      // for loop through res.data {}
+      let calendarObj = {};
+
+      // for loop through res.data and extract values to remap
       for (const obj of res.data) {
-        console.log(obj);
-        let calendarObj = {
+        // console.log(obj);
+        const dateVal = obj.reservation_date.slice(0,10)
+        // console.log(dateVal);
+
+        calendarObj = {
           title: "Booked slot",
-          start: obj.reservation_date,
-          end: obj.reservation_date,
-          startTime: `${obj.start_hour}:${obj.start_minutes}`,
-          endTime: `${obj.end_hour}:${obj.end_minutes}`
+          start: dateVal,
+          end: dateVal,
+          // startTime: `${obj.start_hour}:${obj.start_minutes}`,
+          // endTime: `${obj.end_hour}:${obj.end_minutes}`
+          startTime: {
+            hour: obj.start_hour,
+            minute: obj.start_minutes
+          },
+          endTime: {
+            hour: obj.end_hour,
+            minute: obj.end_minutes
+          }
         };
         resultArray.push(calendarObj);
       }
-
+      
+      console.log(typeof calendarObj.start);
+      console.log("Results Array:",resultArray);
 
        setReservations(resultArray);
      } else {
@@ -51,6 +66,7 @@ export default function Calendar(props) {
          initialView="dayGridMonth"
          headerToolbar={{center: 'dayGridMonth,timeGridWeek,timeGridDay'}}
          events={reservations}
+         nowIndicator
       />
     </>
   )
