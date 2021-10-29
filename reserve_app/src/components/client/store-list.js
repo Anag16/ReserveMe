@@ -58,6 +58,7 @@ export default function StoreList(props) {
         <ul>
           {filteredStores.map((store) => (
             // <li key={store.id}> {store.name}</ li>
+            <>
             <StoreListItem
               key={store.store_id}
               store_id = {store.store_id}
@@ -65,6 +66,8 @@ export default function StoreList(props) {
               desciption={store.desciption}
               img={store.image}
             />
+            <br />
+            </>
           ))}
         </ul>
       </div>
