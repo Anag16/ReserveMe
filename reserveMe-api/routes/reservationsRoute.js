@@ -30,14 +30,14 @@ module.exports = db => {
   // )
 
   router.put("/reservations/:id", (request, response) => {
-    const { reservation_date, start_time, end_time } = request.body.reservation;
+    const { reservation_date, start_hour, start_minutes, end_hour, end_minutes } = request.body.reservation;
     db.query(
       `
-      INSERT INTO reservations (reservation_date, start_time, end_time, user_id, store_id)
-      VALUES ($1::date, $2::timez, $3::timez, $4::integer, $5::integer)
+      INSERT INTO reservations (reservation_date, start_hour, start_minutes, end_hour, end_minutes, user_id, store_id)
+      VALUES ($1::date, $2::integer, $3::integer, $4::integer, $5::integer, $6::integer, $7::integer)
       ON CONFLICT (reservation_id)
-      UPDATE SET reservation_date = $1::date, start_time = $2::text, end_time = $3::text
-      `, [reservation_date, start_time, end_time]
+      UPDATE SET reservation_date = $1::date, start_hour = $2::integer, start_minutes = #3::integer, end_hour = $4::integer, end_minutes = $5::integer
+      `, [reservation_date, start_hour, start_minutes, end_hour, end_minutes]
     ).then(() => {
       response.status(204).json({})
     })
