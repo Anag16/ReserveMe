@@ -6,7 +6,7 @@ VALUES
 ('admin@email.com', 'password', '000-0000', 'Admin Astrator', true);
 
 INSERT INTO stores
-(name, description, image, location, capacity, safety_measures, opening_hour, closing_hour, admin_id)
+(name, description, image, location, capacity, customer_count, reservation_capacity, safety_measures, opening_hour, closing_hour, admin_id)
 VALUES
 ('Walmart', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse efficitur enim eu ante tristique molestie. Ut sit amet nisl pulvinar, pulvinar neque id, lacinia est.', 'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1209106512%2FDaily-Life-During-Coronavirus-Epidemic-In-Toronto%2F960x0.jpg%3Ffit%3Dscale', '3757 Keele St, Toronto, ON', 10, 4, 5, 'mask required', 8, 19, 3),
 ('Zara', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse efficitur enim eu ante tristique molestie. Ut sit amet nisl pulvinar, pulvinar neque id, lacinia est. Ut dolor ex, tincidunt finibus nisl eget, pulvinar venenatis mi. Aliquam pharetra vulputate consectetur. Donec in justo nibh.', 'https://www.retail4growth.com/public/uploads/editor/2020-09-02/1599025250.jpg', 'Yorkdale Centre, 3401, Dufferin Street, M6A 2T9', 20, 10, 5, 'no mask encouraged', 9, 18, 3),
