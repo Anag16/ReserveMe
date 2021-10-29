@@ -6,7 +6,7 @@ export default function Dashboard(props) {
   const [safetyMeasures, setSafetyMeasures] = useState(props.safetyMeasures || "");
 
   const cancel = () => {
-    reset();
+    cancel();
     props.onCancel();
   };
 
