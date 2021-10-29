@@ -34,6 +34,8 @@ module.exports = db => {
       image,
       location,
       capacity,
+      customer_count,
+      reservation_capacity,
       safety_measures,
       opening_hour,
       closing_hour,

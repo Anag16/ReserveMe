@@ -19,6 +19,8 @@ CREATE TABLE stores (
   image VARCHAR(255),
   location VARCHAR(255) NOT NULL,
   capacity INTEGER NOT NULL,
+  customer_count INTEGER NOT NULL,
+  reservation_capacity INTEGER NOT NULL,
   safety_measures TEXT,
   opening_hour INTEGER NOT NULL,
   closing_hour INTEGER NOT NULL,
