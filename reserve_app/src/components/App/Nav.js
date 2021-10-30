@@ -20,8 +20,7 @@ function Nav() {
   let storeList = <NavLink to="/stores">List of stores 🏠</NavLink>;
   // let store = cookie ? <NavLink to="/store">Store 🏗 </NavLink> : '';
   let reservation = cookie ? <NavLink to="/reservation">Reservation 📅 </NavLink> : '';
-  let dashboard = cookie ? <NavLink to="/admin/dashboard">Dashboard 🐗 </NavLink> : '';
-  const counter = <NavLink to="/admin/counter">Counter </NavLink>;
+  // let dashboard = cookie ? <NavLink to="/admin/dashboard">Dashboard 🐗 </NavLink> : '';
   let login = !cookie ? <NavLink to="/login">Login 🚪 </NavLink> : '';
   let logout = cookie ? <NavLink to="/logout" onClick={() => { updateCookie(null); }}>Logout 📅 </NavLink> : '';
   let register = !cookie ? <NavLink to="/register">Register ✏ </NavLink> : '';
