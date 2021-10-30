@@ -17,7 +17,6 @@ function CalendarCreateModal(props) {
   const handleClose = () => {
     onCloseModal(value);
     console.log("inside handle close:", value);
-
   }
 
   const handleSubmitClose = (selValue) => {
