@@ -14,28 +14,45 @@ import axios from 'axios';
 function CalendarCreateModal(props) {
   const { openModal, onCloseModal, value, setValue } = props;
 
-  function submitNewReservation() {
-    // Fri Dec 03 2021 13:15:11 GMT-0500 (Eastern Standard Time) --> format returned by DatePicker selector --> object ? 
-    const fullDate = `${value.getFullYear()}-${value.getMonth() + 1}-${value.getDate()}`;
-    
-    const reservationReturnObj = {
-      reservation_date: fullDate,
-      start_hour: value.getHours(),
-      start_minutes: value.getMinutes(),
-      end_hour: value.getMinutes() < 45 ? value.getHours() : value.getHours() +1,
-
-      end_minutes: (value.getMinutes() + 15) > 60 ? (value.getMinutes() - 45) : (value.getMinutes() +15)
-    }
-
-    onCloseModal();
-    return axios.put(`api/reservations/${store_id}/${fullDate}`, {reservationReturnObj}).then(() => {
-      
-    })
+  const handleClose = () => {
+    onCloseModal(value);
+    console.log("inside handle close:", value);
 
   }
 
+  const handleSubmitClose = (selValue) => {
+    onCloseModal(selValue);
+    let returnValue = selValue;
+
+    if (typeof returnValue === "string"){
+      const parsedDate = parseISOString(selValue)
+      returnValue = parsedDate;
+      console.log("return value is now", typeof returnValue);
+    }
+    
+    const fullDate = `${returnValue.getFullYear()}-${returnValue.getMonth() + 1}-${returnValue.getDate()}`;
+
+    const reservationReturnObj = {
+      reservation_date: fullDate,
+      start_hour: returnValue.getHours(),
+      start_minutes: returnValue.getMinutes(),
+      end_hour: returnValue.getMinutes() < 45 ? returnValue.getHours() : returnValue.getHours() +1,
+
+      end_minutes: (returnValue.getMinutes() + 15) > 60 ? (returnValue.getMinutes() - 45) : (returnValue.getMinutes() +15)
+    }
+
+    console.log("inside handle submit close:", reservationReturnObj);
+
+  }
+
+  function parseISOString(s) {
+    var b = s.split(/\D+/);
+    return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
+  }
+
+
   return (
-    <Dialog open={openModal} onClose={onCloseModal}>
+    <Dialog open={openModal} onClose={handleClose}>
       <DialogTitle>Create reservation</DialogTitle>
       <DialogContent>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -69,8 +86,8 @@ function CalendarCreateModal(props) {
         </LocalizationProvider>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onCloseModal}>Cancel</Button>
-        <Button onClick={submitNewReservation}>Submit</Button>
+        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={() => handleSubmitClose(value)}>Submit</Button>
       </DialogActions>
     </Dialog>
   );

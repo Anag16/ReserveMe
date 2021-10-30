@@ -78,11 +78,11 @@ export default function Calendar(props) {
   const handleOpenModal = (e) => {
     setModalState({ openModal: true });
     setSelectorValue(e.dateStr);
-    console.log("!! sel value", selectorValue);
   };
 
-  const handleClose = () => {
+  const handleClose = (value) => {
     setModalState({ openModal: false });
+    setSelectorValue(value.dateStr);
   };
 
 
@@ -100,6 +100,7 @@ export default function Calendar(props) {
         allDaySlot={false}
         slotMinTime="07:00:00"
         slotMaxTime="21:00:00"
+        eventBackgroundColor="#6db2f7"
       />
       <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue} />
     </>
