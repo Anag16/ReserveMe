@@ -47,6 +47,7 @@ function Nav() {
           open={open}
           onClose={handleClose}
           MenuListProps={{ 'aria-labelledby': `basic-button`, }}>
+            {/* Not working as a link yet */}
           <MenuItem onClick={dashboard}>Dashboard</MenuItem>
           <MenuItem onClick={counter}>Counter</MenuItem>
         </Menu>
