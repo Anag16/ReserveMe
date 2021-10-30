@@ -13,10 +13,10 @@ export default function Counter(props) {
       />
       <h1>{props.count}</h1>
       <img
-        className="counter_reduce"
-        src="images/reduce.png"
-        alt="Reduce"
-        onClick={props.onReduce}
+        className="counter_minus"
+        src="images/minus.png"
+        alt="Minus"
+        onClick={props.onMinus}
       />
     </main>
   )
