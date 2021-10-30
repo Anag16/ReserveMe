@@ -12,14 +12,31 @@ import Stack from '@mui/material/Stack';
 import axios from 'axios';
 
 function CalendarCreateModal(props) {
-  const { openModal, onCloseModal, value, setValue } = props;
+  const { openModal, onCloseModal, value, setValue, store_id, user_id } = props;
+
+  async function addReservation(appointmentData) {
+    console.log('Sending reservation data.....');
+    axios.put(`/api/reservations`, { appointmentData })
+    .then(res => {
+      if (res.status === 204) {
+        alert(res.data);
+      } else {
+        const error = new Error(res.error);
+        throw error;
+      }
+     })
+     .catch(err => {
+      console.error(err);
+      alert('Error. Please try again');
+    });
+  }
 
   const handleClose = () => {
     onCloseModal(value);
     console.log("inside handle close:", value);
   }
 
-  const handleSubmitClose = (selValue) => {
+  const handleSubmitClose = async selValue => {
     onCloseModal(selValue);
     let returnValue = selValue;
     console.log(returnValue);
@@ -27,8 +44,7 @@ function CalendarCreateModal(props) {
       const parsedDate = parseISOString(selValue)
       returnValue = parsedDate;
       console.log("return value type is now", typeof returnValue);
-
-    }
+     }
     
     const fullDate = `${returnValue.getFullYear()}-${returnValue.getMonth() + 1}-${returnValue.getDate()}`;
 
@@ -42,6 +58,16 @@ function CalendarCreateModal(props) {
     }
 
     console.log("inside handle submit close:", reservationReturnObj);
+
+    let reservation_date = reservationReturnObj.reservation_date;
+    let start_hour = reservationReturnObj.start_hour;
+    let start_minutes = reservationReturnObj.start_minutes;
+    let end_minutes = reservationReturnObj.end_minutes;
+    let end_hour = reservationReturnObj.end_hour;
+    //Send data to server?
+    await addReservation({
+      reservation_date, start_hour, start_minutes, end_hour, end_minutes, user_id, store_id
+    });
 
   }
 

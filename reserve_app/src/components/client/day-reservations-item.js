@@ -94,7 +94,7 @@ export default function DayReservationItem(props) {
       slotMaxTime="21:00:00"
       eventBackgroundColor="#6db2f7"
     />
-    <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue} />
+    <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue} store_id = {store_id} user_id = {user_id} />
   </>
   );
 
