@@ -4,13 +4,15 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-// import Calendar from "./calendar";
+import { CalendarCreateModal } from './calendarHelper';
 
 export default function DayReservationItem(props) {
   const { store_id, user_id, dateString } = props;
 
   const [isLoading, setLoading] = useState(true);
   const [availableDays, setAvailableDays] = useState();
+  const [modalState, setModalState] = useState({ openModal: false });
+  const [selectorValue, setSelectorValue] = useState(new Date());
 
   useEffect(() => {
     let day = new Date(dateString);
@@ -63,19 +65,37 @@ export default function DayReservationItem(props) {
   if (isLoading) {
     return <div className="App">Loading...</div>;
   }
+
+    // modal states
+    const handleOpenModal = (e) => {
+      setModalState({ openModal: true });
+      setSelectorValue(e.date);
+    };
+  
+    const handleClose = (value) => {
+      setModalState({ openModal: false });
+      setSelectorValue(value.dateStr);
+    };
+
+    
   return (
+    <>
     <FullCalendar
       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-      initialView="dayGridWeek"
-      headerToolbar={{ center: 'timeGridWeek,timeGridDay' }}
+      initialView="dayGridMonth"
+      headerToolbar={{ center: 'dayGridMonth,timeGridWeek,timeGridDay' }}
       events={availableDays}
       nowIndicator
+      dateClick={(e) => handleOpenModal(e)}
+      //  (e) => console.log(e.dateStr)
+      height="auto"
+      allDaySlot={false}
+      slotMinTime="07:00:00"
+      slotMaxTime="21:00:00"
+      eventBackgroundColor="#6db2f7"
     />
-    // <Calendar 
-    // store_id = {store_id}
-    // user_id = {user_id}
-    // dateString = {dateString}
-    // />
+    <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue} />
+  </>
   );
 
 }

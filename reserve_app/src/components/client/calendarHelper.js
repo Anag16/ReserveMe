@@ -22,11 +22,12 @@ function CalendarCreateModal(props) {
   const handleSubmitClose = (selValue) => {
     onCloseModal(selValue);
     let returnValue = selValue;
-
+    console.log(returnValue);
     if (typeof returnValue === "string"){
       const parsedDate = parseISOString(selValue)
       returnValue = parsedDate;
-      console.log("return value is now", typeof returnValue);
+      console.log("return value type is now", typeof returnValue);
+
     }
     
     const fullDate = `${returnValue.getFullYear()}-${returnValue.getMonth() + 1}-${returnValue.getDate()}`;
