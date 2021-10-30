@@ -77,7 +77,7 @@ export default function DayReservationItem(props) {
       setSelectorValue(value.dateStr);
     };
 
-    
+  
   return (
     <>
     <FullCalendar
@@ -94,6 +94,7 @@ export default function DayReservationItem(props) {
       slotMaxTime="21:00:00"
       eventBackgroundColor="#6db2f7"
     />
+    {/* Passing store_id and user_id as props to Modal (They are needed in axios request to create new reservation) */}
     <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue} store_id = {store_id} user_id = {user_id} />
   </>
   );

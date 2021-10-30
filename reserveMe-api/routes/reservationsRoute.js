@@ -52,7 +52,7 @@ module.exports = db => {
       // ON CONFLICT (reservation_id)
       // UPDATE SET reservation_date = $1::date, start_hour = $2::integer, start_minutes = #3::integer, end_hour = $4::integer, end_minutes = $5::integer
     ).then(({ rows: reservations }) => {
-      response.json(reservations);
+      response.status(200).send('Your spot has been reserved');
     });
   })
 
