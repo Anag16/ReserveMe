@@ -1,7 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import Calendar from 'react-calendar';
 import useCookie from "../useCookie";
 import DayReservationItem from "./day-reservations-item";
 
@@ -30,7 +29,7 @@ export default function Store(props) {
        console.error(err);
        alert('Error. Please try again');
      });
-  });
+  },[]);
 
   if (isLoading) {
     return <div className="App">Loading...</div>;
