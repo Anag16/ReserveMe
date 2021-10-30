@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function Dashboard(props) {
   const [storeName, setStoreName] = useState(props.storeName || "");
   const [storeDescription, setStoreDescription] = useState(props.storeDescription || "");
-  // const [storeLocation, setStoreLocation] = useState(props.storeLocation || "");
+  const [storeLocation, setStoreLocation] = useState(props.storeLocation || "");
   const [safetyMeasures, setSafetyMeasures] = useState(props.safetyMeasures || "");
 
   const cancel = () => {
@@ -15,7 +15,6 @@ export default function Dashboard(props) {
     save();
     props.onSave();
   }
-//Dropdown menu named admin? Visible only to admin. Menu includes dashboard (store page) and counter
   return (
     <main className="layout">
       <h1>Dashboard</h1>
@@ -60,7 +59,7 @@ export default function Dashboard(props) {
         <section className="store-image">
           Store image
         </section>
-        {/* <section className="location">
+        <section className="location">
           <input
             className="store-location"
             name="name"
@@ -70,7 +69,7 @@ export default function Dashboard(props) {
             onChange={(event) => setStoreLocation(event.target.value)}
             data-testid="store-location-input"
           />
-        </section> */}
+        </section>
         <section className="store-capacity">
           Store capacity
         </section>
