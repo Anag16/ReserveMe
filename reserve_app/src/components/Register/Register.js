@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Register.css';
@@ -17,8 +16,6 @@ async function registerUser(userData) {
     console.error(err);
     alert('Error. Please try again');
   });
-
-
 }
 
 export default function Register() {

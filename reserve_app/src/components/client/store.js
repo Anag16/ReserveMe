@@ -57,6 +57,8 @@ export default function Store(props) {
 
       <DayReservationItem 
         store_id = {storeObj.store_id}
+        store_name = {storeObj.name}
+        store_capacity = {storeObj.capacity}
         user_id = {user_id}
         dateString = {reservationDay.toISOString().slice(0, 19).replace('T', ' ')}
       ></DayReservationItem>
