@@ -12,16 +12,16 @@ import Stack from '@mui/material/Stack';
 import axios from 'axios';
 
 function CalendarCreateModal(props) {
-  const { openModal, onCloseModal, value, setValue, store_id, user_id } = props;
+  const { openModal, onCloseModal, value, setValue, store_id, user_id, getReservations } = props;
 
   //Send data to server. api/reservations needs reservation_date, start_hour, start_minutes, end_hour, end_minutes, user_id, store_id
   async function addReservation(appointmentData) {
-    console.log('Sending reservation data.....');
     axios.put(`/api/reservations`, { appointmentData })
     .then(res => {
       if (res.status === 200) { //Status 204 does not allow to send a body response
         console.log('The server says:')
         alert(res.data);
+        getReservations(); //Make the calendar rerender by fetching the reservations again
       } else {
         const error = new Error(res.error);
         console.log(res);

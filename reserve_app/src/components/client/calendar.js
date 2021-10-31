@@ -102,7 +102,7 @@ export default function Calendar(props) {
         slotMaxTime="21:00:00"
         eventBackgroundColor="#6db2f7"
       />
-      <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue} />
+      <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue}/>
     </>
   )
 
