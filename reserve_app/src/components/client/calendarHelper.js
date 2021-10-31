@@ -12,7 +12,7 @@ import Stack from '@mui/material/Stack';
 import axios from 'axios';
 
 function CalendarCreateModal(props) {
-  const { openModal, onCloseModal, value, setValue, store_id, user_id, getReservations } = props;
+  const { openModal, onCloseModal, value, setValue, store_id, user_id, remainingCapacity, store_name, getReservations } = props;
 
   //Send data to server. api/reservations needs reservation_date, start_hour, start_minutes, end_hour, end_minutes, user_id, store_id
   async function addReservation(appointmentData) {
@@ -82,12 +82,12 @@ function CalendarCreateModal(props) {
 
   return (
     <Dialog open={openModal} onClose={handleClose}>
-      <DialogTitle>Create reservation</DialogTitle>
+      <DialogTitle>Create reservation at {store_name}!</DialogTitle>
       <DialogContent>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <Stack spacing={3}>
             <DialogContentText>
-              To see if this will render, entering test dialog
+              Remaining spots: {remainingCapacity}
             </DialogContentText>
             <TextField
               autoFocus
