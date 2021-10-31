@@ -86,8 +86,8 @@ export default function DayReservationItem(props) {
     <>
     <FullCalendar
       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-      initialView="dayGridMonth"
-      headerToolbar={{ center: 'dayGridMonth,timeGridWeek,timeGridDay' }}
+      initialView="timeGridWeek"
+      headerToolbar={{ center: 'timeGridWeek,timeGridDay' }}
       events={availableDays}
       nowIndicator
       dateClick={(e) => handleOpenModal(e)}
