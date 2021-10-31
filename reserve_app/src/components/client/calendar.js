@@ -92,7 +92,7 @@ export default function Calendar(props) {
     <>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
+        initialView="timeGridWeek"
         headerToolbar={{ center: 'dayGridMonth,timeGridWeek,timeGridDay' }}
         events={reservations}
         nowIndicator

@@ -6,15 +6,17 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarCreateModal } from './calendarHelper';
 
+import { CalendarCreateModal } from './calendarHelper';
+
 export default function DayReservationItem(props) {
   const { store_id, store_name, store_capacity, user_id, dateString } = props;
 
   const [isLoading, setLoading] = useState(true);
-  const [availableDays, setAvailableDays] = useState();
+  const [availableDays, setAvailableDays] = useState({});
+//before merge:  const [availableDays, setAvailableDays] = useState();
   const [modalState, setModalState] = useState({ openModal: false });
   const [selectorValue, setSelectorValue] = useState(new Date());
   const [remainingCapacity, setRemainingCapacity] = useState();
-
   const getReservations = function (){
     axios.get(`/api/reservations/${store_id}/`)
     .then(res => {
@@ -86,38 +88,42 @@ export default function DayReservationItem(props) {
         alert('Error. Please try again');
       });
       
+  if (isLoading) {
+    return <div className="App">Loading...</div>;
+  }
 
-    }
-    // modal states
-    const handleOpenModal = (e) => {
-      displayModal(e.date, store_id, store_capacity)
-    };
-  
-    const handleClose = (value) => {
-      setModalState({ openModal: false });
-      setSelectorValue(value.dateStr);
-    };
+  // modal states
+  const handleOpenModal = (e) => {
+    setModalState({ openModal: true });
+    setSelectorValue(e.dateStr);
+//before merge: displayModal(e.date, store_id, store_capacity)
+  };
 
-  
+  const handleClose = (value) => {
+    setModalState({ openModal: false });
+    setSelectorValue(value.dateStr);
+  };
+
   return (
     <>
-    <FullCalendar
-      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-      initialView="timeGridWeek"
-      headerToolbar={{ center: 'timeGridWeek,timeGridDay' }}
-      events={availableDays}
-      nowIndicator
-      dateClick={(e) => handleOpenModal(e)}
-      //  (e) => console.log(e.dateStr)
-      height="auto"
-      allDaySlot={false}
-      slotMinTime="07:00:00"
-      slotMaxTime="21:00:00"
-      eventBackgroundColor="#6db2f7"
-    />
+      <FullCalendar
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        initialView="dayGridWeek"
+//before merge: initialView="timeGridWeek"
+        headerToolbar={{ center: 'timeGridWeek,timeGridDay' }}
+        events={availableDays}
+        nowIndicator
+        dateClick={(e) => handleOpenModal(e)}
+        //  (e) => console.log(e.dateStr)
+        height="auto"
+        allDaySlot={false}
+        slotMinTime="07:00:00"
+        slotMaxTime="21:00:00"
+        eventBackgroundColor="#6db2f7"
+      />
+            
     {/* Passing store_id and user_id as props to Modal (They are needed in axios request to create new reservation) */}
     <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue} store_id = {store_id} user_id = {user_id} getReservations = {getReservations} store_name={store_name} remainingCapacity = {remainingCapacity}/>
   </>
   );
-
 }
