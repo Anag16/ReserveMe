@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import useCookie from "../useCookie";
 import DayReservationItem from "./day-reservations-item";
+import StoreTabs from './store-tabs';
+import './store.css';
 
 export default function Store(props) {
 
@@ -39,17 +41,19 @@ export default function Store(props) {
 
   return (
     <div className="Store">
-      <h1>Store</h1>
-      <p>This store's name is: {storeObj.name}</p>
-      {/* <p>This user id is : {user_id}</p>
-      <p>This user fullname is : {user_fullname}</p> */}
+      <h1> {storeObj.name}</h1>
+      <img src={storeObj.image} />
 
-      {/* <Calendar
-        onChange={onDayChange}
-        value={reservationDay}
-        maxDate = {new Date(Date.now() + 12096e5)}
-        minDate = {new Date(Date.now())}
-      /> */}
+      <StoreTabs 
+        description={storeObj.description}
+        location={storeObj.location}
+        capacity={storeObj.capacity}
+        customer_count={storeObj.customer_count}
+        reservation_capacity={storeObj.reservation_capacity}
+        safety_measures={storeObj.safety_measures}
+        opening_hour={storeObj.opening_hour}
+        closing_hour={storeObj.closing_hour}
+      />
 
       <DayReservationItem 
         store_id = {storeObj.store_id}
