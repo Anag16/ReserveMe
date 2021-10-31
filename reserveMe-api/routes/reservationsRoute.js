@@ -3,6 +3,21 @@ const withAuth = require('../middleware');
 
 module.exports = db => {
 
+  router.get("/reservations/:store_id/:dateString/:startHour/:startMinutes/", withAuth, (request, response) => {
+    // 2021-10-28 20:39:19
+    let store_id = String(request.params.store_id.toString());
+    let dateString = `${request.params.dateString}`;
+    let startHour = `${request.params.startHour}`;
+    let startMinutes = `${request.params.startMinutes}`;
+    db.query(
+      `SELECT *
+      FROM reservations
+      WHERE store_id::varchar = '${store_id}' AND reservation_date = '${dateString}' AND start_hour = '${startHour}' AND start_minutes = '${startMinutes}'`
+    ).then(({ rows: reservations }) => {
+      response.json(reservations);
+    });
+  });
+
   router.get("/reservations/:store_id/:dateString", withAuth, (request, response) => {
     // 2021-10-28 20:39:19
     let store_id = String(request.params.store_id.toString());

@@ -7,7 +7,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarCreateModal } from './calendarHelper';
 
 export default function DayReservationItem(props) {
-  const { store_id, user_id, dateString } = props;
+  const { store_id, capacity, user_id, dateString } = props;
 
   const [isLoading, setLoading] = useState(true);
   const [availableDays, setAvailableDays] = useState();
@@ -72,6 +72,7 @@ export default function DayReservationItem(props) {
 
     // modal states
     const handleOpenModal = (e) => {
+      console.log(e.date);
       setModalState({ openModal: true });
       setSelectorValue(e.date);
     };
