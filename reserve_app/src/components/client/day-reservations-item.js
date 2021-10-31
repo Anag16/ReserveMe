@@ -6,8 +6,6 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarCreateModal } from './calendarHelper';
 
-import { CalendarCreateModal } from './calendarHelper';
-
 export default function DayReservationItem(props) {
   const { store_id, store_name, store_capacity, user_id, dateString } = props;
 
