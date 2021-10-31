@@ -15,12 +15,10 @@ export default function Calendar(props) {
   const [selectorValue, setSelectorValue] = useState(new Date());
   const [storeHours, setStoreHours] = useState({})
 
-  useEffect(() => {
+  const getReservations = function (){
     const axiosReq1 = axios.get(`/api/reservations`)
-    const axiosReq2 = axios.get(`/api/stores`)
-
+    const axiosReq2 = axios.get(`/api/stores`);
     axios.all([axiosReq1, axiosReq2])
-
       .then(res => {
         if (res[0].status === 200 && res[1].status) {
           let resultArray = [];
@@ -67,6 +65,10 @@ export default function Calendar(props) {
         console.error(err);
         alert('Error. Please try again');
       });
+  }
+
+  useEffect(() => {
+    getReservations();
   }, []);
 
 
@@ -77,7 +79,7 @@ export default function Calendar(props) {
   // modal states
   const handleOpenModal = (e) => {
     setModalState({ openModal: true });
-    setSelectorValue(e.dateStr);
+    setSelectorValue(e.date);
   };
 
   const handleClose = (value) => {
@@ -102,7 +104,9 @@ export default function Calendar(props) {
         slotMaxTime="21:00:00"
         eventBackgroundColor="#6db2f7"
       />
-      <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue}/>
+      {/* <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue}/> */}
+          {/* Passing store_id and user_id as props to Modal (They are needed in axios request to create new reservation) */}
+    <CalendarCreateModal {...modalState} onCloseModal={handleClose} value={selectorValue} setValue={setSelectorValue} store_id = {store_id} user_id = {user_id} getReservations = {getReservations}/>
     </>
   )
 
