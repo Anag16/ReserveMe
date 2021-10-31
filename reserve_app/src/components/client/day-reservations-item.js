@@ -7,7 +7,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarCreateModal } from './calendarHelper';
 
 export default function DayReservationItem(props) {
-  const { store_id, capacity, user_id, dateString } = props;
+  const { store_id, store_capacity, user_id, dateString } = props;
 
   const [isLoading, setLoading] = useState(true);
   const [availableDays, setAvailableDays] = useState();
@@ -70,11 +70,36 @@ export default function DayReservationItem(props) {
     return <div className="App">Loading...</div>;
   }
 
+    const displayModal = function(date, store_id, capacity){
+      axios.get(`/api/reservations/${store_id}/${date.toISOString()}/${date.getHours()}/${date.getMinutes()}`)
+      .then(res => {
+        if (res.status === 200) {
+          let count = res.data.length;
+          console.log(capacity);
+          if (count < capacity){
+            console.log('We have room');
+            setModalState({ openModal: true });
+            setSelectorValue(date);
+          }
+          else{
+            alert('We are full at that time.')
+          }
+          
+        } else {
+          const error = new Error(res.error);
+          throw error;
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert('Error. Please try again');
+      });
+      
+
+    }
     // modal states
     const handleOpenModal = (e) => {
-      console.log(e.date);
-      setModalState({ openModal: true });
-      setSelectorValue(e.date);
+      displayModal(e.date, store_id, store_capacity)
     };
   
     const handleClose = (value) => {

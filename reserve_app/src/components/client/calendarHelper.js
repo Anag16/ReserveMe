@@ -55,9 +55,9 @@ function CalendarCreateModal(props) {
       reservation_date: fullDate,
       start_hour: returnValue.getHours(),
       start_minutes: returnValue.getMinutes(),
-      end_hour: returnValue.getMinutes() < 30 ? returnValue.getHours() : returnValue.getHours() +1,
+      end_hour: new Date(returnValue.getTime() + 30*60000).getHours(),
 
-      end_minutes: (returnValue.getMinutes() + 30) > 60 ? (returnValue.getMinutes() - 30) : (0)
+      end_minutes: new Date(returnValue.getTime() + 30*60000).getMinutes()
     }
 
     console.log("inside handle submit close:", reservationReturnObj);
