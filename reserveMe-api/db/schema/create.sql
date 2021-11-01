@@ -25,7 +25,7 @@ CREATE TABLE stores (
   safety_measures TEXT,
   opening_hour INTEGER NOT NULL,
   closing_hour INTEGER NOT NULL,
-  admin_id INTEGER NOT NULL
+  admin_id INTEGER REFERENCES admins(admin_id) ON DELETE CASCADE
 );
 
 CREATE TABLE admins (
