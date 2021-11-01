@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS reservations CASCADE;
+DROP TABLE IF EXISTS admins CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS stores CASCADE;
 
@@ -25,6 +26,11 @@ CREATE TABLE stores (
   opening_hour INTEGER NOT NULL,
   closing_hour INTEGER NOT NULL,
   admin_id INTEGER NOT NULL
+);
+
+CREATE TABLE admins (
+admin_id SERIAL PRIMARY KEY NOT NULL,
+user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE reservations (
