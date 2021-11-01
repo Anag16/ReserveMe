@@ -59,6 +59,7 @@ export default function StoreList(props) {
         direction="row" 
         alignItems="center"
         justifyContent="center"
+        wrap
         >
           {filteredStores.map((store) => (
             <Grid item xs={4}>
