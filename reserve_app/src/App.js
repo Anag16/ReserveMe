@@ -5,8 +5,9 @@ import AuthComponent from '../src/components/AuthComponent'
 import Dashboard from '../src/components/admin/dashboard';
 import Store from '../src/components/client/store';
 import StoreList from './components/client/store-list';
-import Reservation from './components/client/reservation';
-import Nav from './components/App/Nav';
+import Reservations from './components/admin/reservations';
+import Counter from './components/admin/counter'
+import Nav from './components/Nav';
 import Login from '../src/components/Login/Login';
 import Logout from '../src/components/Login/Logout';
 import Register from '../src/components/Register/Register';
@@ -22,9 +23,10 @@ class App extends Component {
           <Route path="/logout" component={Logout} />
           <Route path="/register" component={Register} />
           <Route path="/admin/dashboard" component={AuthComponent(Dashboard)} />
+          <Route path="/admin/counter" component={AuthComponent(Counter)} />
           <Route path="/stores" component={AuthComponent(StoreList)} />
           <Route path="/store" component={AuthComponent(Store)} />
-          <Route path="/reservation" component={AuthComponent(Reservation)} />
+          <Route path="/admin/reservations" component={AuthComponent(Reservations)} />
         </Switch>
       </div>
     );
