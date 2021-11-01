@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import Search from "./search";
 import StoreListItem from "./store-list-item";
 import axios from 'axios';
+import { Grid } from '@mui/material';
 
 export default function StoreList(props) {
   const [isLoading, setLoading] = useState(true);
@@ -38,9 +39,6 @@ export default function StoreList(props) {
      });
   }, []);
 
-
- 
-
   if (isLoading) {
     return <div className="App">Loading...</div>;
   }
@@ -48,17 +46,23 @@ export default function StoreList(props) {
   const filteredStores = filterStores(stores, searchQuery)
 
   return (
-    <Fragment>
       <div className="List">
         <h1>Store List</h1>
         <Search
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
-        <ul>
+        <Grid 
+        container
+        rowSpacing={1}
+        columnSpacing={{ xs: 1, sm: 2, md: 3}}
+        direction="row" 
+        alignItems="center"
+        justifyContent="center"
+        wrap
+        >
           {filteredStores.map((store) => (
-            // <li key={store.id}> {store.name}</ li>
-            <>
+            <Grid item xs={4}>
             <StoreListItem
               key={store.store_id}
               store_id = {store.store_id}
@@ -66,11 +70,10 @@ export default function StoreList(props) {
               desciption={store.desciption}
               img={store.image}
             />
-            <br />
-            </>
-          ))}
-        </ul>
+            </Grid>
+            ))}
+          </Grid>
+       
       </div>
-    </Fragment>
   );
 }
