@@ -60,42 +60,42 @@ export default function DayReservationItem(props) {
     return <div className="App">Loading...</div>;
   }
 
-  // const displayModal = function (date, store_id, capacity) {
-  //   axios.get(`/api/reservations/${store_id}/${date.toISOString()}/${date.getHours()}/${date.getMinutes()}`)
-  //     .then(res => {
-  //       if (res.status === 200) {
-  //         let count = res.data.length;
-  //         console.log(capacity);
-  //         if (count < capacity) {
-  //           let remaining = capacity - count;
-  //           setRemainingCapacity(remaining)
-  //           setModalState({ openModal: true });
-  //           setSelectorValue(date);
-  //         }
-  //         else {
-  //           alert('We are full at that time.')
-  //         }
+  const displayModal = function (date, store_id, capacity) {
+    axios.get(`/api/reservations/${store_id}/${date.toISOString()}/${date.getHours()}/${date.getMinutes()}`)
+      .then(res => {
+        if (res.status === 200) {
+          let count = res.data.length;
+          console.log(capacity);
+          if (count < capacity) {
+            let remaining = capacity - count;
+            setRemainingCapacity(remaining)
+            setModalState({ openModal: true });
+            setSelectorValue(date);
+          }
+          else {
+            alert('We are full at that time.')
+          }
 
-  //       } else {
-  //         const error = new Error(res.error);
-  //         throw error;
-  //       }
-  //     })
-  //     .catch(err => {
-  //       console.error(err);
-  //       alert('Error. Please try again');
-  //     });
+        } else {
+          const error = new Error(res.error);
+          throw error;
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert('Error. Please try again');
+      });
 
-  //   if (isLoading) {
-  //     return <div className="App">Loading...</div>;
-  //   }
-  // }
+    if (isLoading) {
+      return <div className="App">Loading...</div>;
+    }
+  }
 
   // modal states
   const handleOpenModal = (e) => {
     setModalState({ openModal: true });
     setSelectorValue(e.dateStr);
-    //before merge: displayModal(e.date, store_id, store_capacity)
+    displayModal(e.date, store_id, store_capacity)
   };
 
   const handleClose = (value) => {
@@ -107,8 +107,7 @@ export default function DayReservationItem(props) {
     <>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView="dayGridWeek"
-        //before merge: initialView="timeGridWeek"
+        initialView="timeGridWeek"
         headerToolbar={{ center: 'timeGridWeek,timeGridDay' }}
         events={availableDays}
         nowIndicator
