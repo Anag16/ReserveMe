@@ -9,11 +9,11 @@ export default function StoreListItem(props) {
   const { store_id, name, description, img } = props;
 
   return (
-    <Card sx={{ maxWidth: 325 }}>
+    <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="auto"
           image={img}
         />
         <CardContent>
@@ -28,7 +28,6 @@ export default function StoreListItem(props) {
       <CardActions>
         <Button size="small" color="primary">
           <Link to={{pathname: `/store/${store_id}`, state:{store_id } }} style={{ textDecoration: 'none' }}>Details</Link>
-          {/* Details */}
         </Button>
       </CardActions>
     </Card>
