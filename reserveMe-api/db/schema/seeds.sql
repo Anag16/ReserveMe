@@ -4,13 +4,15 @@ VALUES
 ('user1@email.com', '123', '111-1111', 'User1 Name1', false),
 ('user2@email.com', '123', '222-2222', 'User2', false),
 ('admin@email.com', '123', '000-0000', 'Admin Astrator', true),
-('admin@admin.com', '123', '888-8888', 'Ad Ministrator', true);
+('admin2@admin.com', '123', '888-8888', 'Ad Ministrator', true),
+('admin3@admin.com', '123', '888-8888', 'Another Admin', true);
 
 INSERT INTO admins
 (user_id)
 VALUES
 (3),
-(4);
+(4),
+(5);
 
 INSERT INTO stores
 (name, description, image, location, capacity, customer_count, reservation_capacity, safety_measures, opening_hour, closing_hour, admin_id)
