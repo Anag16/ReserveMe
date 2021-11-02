@@ -111,7 +111,7 @@ function CalendarCreateModal(props) {
 
             <DateTimePicker
               renderInput={(params) => <TextField {...params} />}
-              label="Select your start date"
+              label="Start time and date"
               value={value}
               onChange={(newValue) => {
                 setValue(newValue);
