@@ -2,9 +2,10 @@ import { useLocation } from 'react-router-dom'
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import useCookie from "../useCookie";
-import DayReservationItem from "./day-reservations-item";
 import StoreTabs from './store-tabs';
 import './store.css';
+
+import StoreHeader from './store-top-display';
 
 export default function Store(props) {
 
@@ -18,33 +19,36 @@ export default function Store(props) {
 
   useEffect(() => {
     axios.get(`/api/stores/${store_id}`)
-    .then(res => {
-     if (res.status === 200) {
-       setStore(res.data);
-       setLoading(false);
-     } else {
-       const error = new Error(res.error);
-       throw error;
-     }
-    })
-     .catch(err => {
-       console.error(err);
-       alert('Error. Please try again');
-     });
-  },[]);
+      .then(res => {
+        if (res.status === 200) {
+          setStore(res.data);
+          setLoading(false);
+        } else {
+          const error = new Error(res.error);
+          throw error;
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert('Error. Please try again');
+      });
+  }, []);
 
   if (isLoading) {
     return <div className="App">Loading...</div>;
   }
 
   let storeObj = store[0];
+  console.log("reservationday!", reservationDay)
 
   return (
     <div className="Store">
-      <h1> {storeObj.name}</h1>
-      <img src={storeObj.image} />
+      <StoreHeader 
+        name={storeObj.name}
+        image={storeObj.image}
+      />
 
-      <StoreTabs 
+      <StoreTabs
         description={storeObj.description}
         location={storeObj.location}
         capacity={storeObj.capacity}
@@ -53,6 +57,10 @@ export default function Store(props) {
         safety_measures={storeObj.safety_measures}
         opening_hour={storeObj.opening_hour}
         closing_hour={storeObj.closing_hour}
+        store_id={storeObj.store_id}
+        store_name={storeObj.name}
+        user_id={user_id}
+        dateString={reservationDay.toISOString().slice(0, 19).replace('T', ' ')}
       />
 
        {/* Moved reservation calendar into a tab */}
