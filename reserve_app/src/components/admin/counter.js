@@ -1,5 +1,7 @@
 import React from "react";
-import { IconButton, Add, Remove } from "@mui/material";
+import { IconButton } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 export default function Counter(props) {
 
@@ -7,11 +9,11 @@ export default function Counter(props) {
     <main className="Counter">
       <h1>Counter</h1>
       <IconButton>
-        <Add />
+        <AddIcon />
       </IconButton>
       <h1>{props.count}</h1>
       <IconButton>
-        <Remove />
+        <RemoveIcon />
       </IconButton>
     </main>
   )
