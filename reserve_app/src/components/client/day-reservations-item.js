@@ -77,6 +77,7 @@ export default function DayReservationItem(props) {
   }
 
   const displayModal = function (date, store_id, capacity) {
+    setModalState({ openModal: false }); //Closed by default;
     axios.get(`/api/reservations/${store_id}/${date.toISOString()}/${date.getHours()}/${date.getMinutes()}`)
       .then(res => {
         if (res.status === 200) {
@@ -84,6 +85,7 @@ export default function DayReservationItem(props) {
           console.log(capacity);
           if (count < capacity) {
             let remaining = capacity - count;
+            console.log('Remaining: ' + remaining);
             setRemainingCapacity(remaining)
             setModalState({ openModal: true });
             setSelectorValue(date);
