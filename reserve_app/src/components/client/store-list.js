@@ -1,8 +1,11 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Search from "./search";
 import StoreListItem from "./store-list-item";
 import axios from 'axios';
-import { Grid } from '@mui/material';
+import { Grid, Box, Stack, Typography } from '@mui/material';
+
+import './store-list.css';
+import { blue } from "@mui/material/colors";
 
 export default function StoreList(props) {
   const [isLoading, setLoading] = useState(true);
@@ -47,33 +50,43 @@ export default function StoreList(props) {
 
   return (
     <div className="List">
-      <h1>Store List</h1>
-      <Search
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-      <Grid
-        container
-        rowSpacing={1}
-        columnSpacing={{ xs: 0.5, sm: 1, md: 2 }}
-        direction="row"
-        alignItems="center"
-        justifyContent="center"
-        wrap
-      >
-        {filteredStores.map((store) => (
-          <Grid item xs={4}>
-            <StoreListItem
-              key={store.store_id}
-              store_id={store.store_id}
-              name={store.name}
-              desciption={store.desciption}
-              img={store.image}
-            />
-          </Grid>
-        ))}
-      </Grid>
-
+      <Stack spacing={2} direction="column" sx={{alignItems: "center", justifyContent: "center"}}>
+        <Box sx={{ 
+          backgroundColor: blue[200], 
+          padding: 2, 
+          width: '100%', 
+          display: "flex", 
+          // flexDirection: "column",
+          justifyContent: "center", 
+          alignItems: "center"
+          }}>
+          <Typography variant="h5" sx={{padding:2}}> Search stores: </Typography>
+          <Search
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+        </Box>
+        <Grid
+          container
+          rowSpacing={1.5}
+          columnSpacing={{ xs: 0.5, sm: 1, md: 2 }}
+          direction="row"
+          wrap
+          sx={{ padding: 3, alignItems: "center", justifyContent: "center" }}
+        >
+          {filteredStores.map((store) => (
+            <Grid item xs={4}>
+              <StoreListItem
+                key={store.store_id}
+                store_id={store.store_id}
+                name={store.name}
+                desciption={store.desciption}
+                img={store.image}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Stack>
     </div>
   );
 }
