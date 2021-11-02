@@ -135,7 +135,7 @@ export default function DayReservationItem(props) {
   const deleteReservation = function(myEvent, reservation_id){
     myAlert.fire({
       title: '<strong>Are you sure you want to delete this reservation</strong>',
-  icon: 'info',
+  icon: 'question',
   html:
     `<p>Place: ${myEvent.store_name}<p>
      <p>Date: ${myEvent.eventDate}<p>
@@ -148,9 +148,21 @@ export default function DayReservationItem(props) {
   confirmButtonText: 'Delete Reservation',
   cancelButtonText: 'Cancel',
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         // Proceed to delete reservation.
+        axios.delete(`/api/reservations/${reservation_id}/`)
+        .then(res => {
+          if (res.status === 200) {
+            Swal.fire(res.data, '', 'success');
+          } else {
+            const error = new Error(res.error);
+            throw error;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          Swal.fire('Error. Please try again', '', 'warning')
+        });
       } else if (result.isDismissed) {
         
       }})

@@ -77,7 +77,8 @@ module.exports = db => {
       WHERE reservation_id = $1::integer`,
       [request.params.id]
     ).then(() => {
-      response.status(204).json({})
+      console.log(`Deleted reservation ${request.params.id}`);
+      response.status(200).send('Your reservation has been deleted.');
     })
   });
   return router;
