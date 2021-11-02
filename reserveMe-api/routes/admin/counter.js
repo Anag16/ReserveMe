@@ -35,5 +35,21 @@ module.exports = db => {
       response.send('Counter page here');
     });
   });
+
+  /*
+  router.put("/admin/counter", (request, response) => {
+    const {store_id, customer_count, admin_id } = request.body.appointmentData;
+    db.query(
+      `
+      INSERT INTO stores (store_id, customer_count)
+      VALUES ($1::date, $2::integer, $3::integer)
+      `, [store_id, customer_count, admin_id]
+      // ON CONFLICT (store_id)
+      // UPDATE SET customer_count = $2::integer
+    ).then(() => {
+      response.status(200).send('Count updated');
+    });
+  })
+  */
   return router;
 };
