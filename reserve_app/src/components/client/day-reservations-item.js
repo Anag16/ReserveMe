@@ -60,7 +60,11 @@ export default function DayReservationItem(props) {
       })
       .catch(err => {
         console.error(err);
-        alert('Error. Please try again');
+        Swal.fire(
+          'Error',
+          'Please try again!',
+          'error'
+        );
       });
   }
 
@@ -85,7 +89,11 @@ export default function DayReservationItem(props) {
             setSelectorValue(date);
           }
           else {
-            alert('We are full at that time.')
+            Swal.fire(
+              'Oops',
+              'We are full at that time. Try a different time.',
+              'warning'
+            );
           }
 
         } else {
@@ -95,7 +103,11 @@ export default function DayReservationItem(props) {
       })
       .catch(err => {
         console.error(err);
-        alert('Error. Please try again');
+        Swal.fire(
+          'Error',
+          'Please try again!',
+          'error'
+        );
       });
 
     if (isLoading) {
@@ -135,37 +147,38 @@ export default function DayReservationItem(props) {
   const deleteReservation = function(myEvent, reservation_id){
     myAlert.fire({
       title: '<strong>Are you sure you want to delete this reservation</strong>',
-  icon: 'question',
-  html:
-    `<p>Place: ${myEvent.store_name}<p>
-     <p>Date: ${myEvent.eventDate}<p>
-     <p>From ${myEvent.start_hour}:${myEvent.start_minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})} to ${myEvent.end_hour}:${myEvent.end_minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}</p>`,
-  showCloseButton: true,
-  showCancelButton: true,
-  focusConfirm: false,
-  confirmButtonColor: 'red',
-  cancelButtonColor: 'blue',
-  confirmButtonText: 'Delete Reservation',
-  cancelButtonText: 'Cancel',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Proceed to delete reservation.
-        axios.delete(`/api/reservations/${reservation_id}/`)
-        .then(res => {
-          if (res.status === 200) {
-            Swal.fire(res.data, '', 'success');
-          } else {
-            const error = new Error(res.error);
-            throw error;
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          Swal.fire('Error. Please try again', '', 'warning')
-        });
-      } else if (result.isDismissed) {
-        
-      }})
+      icon: 'question',
+      html:
+        `<p>Place: ${myEvent.store_name}<p>
+        <p>Date: ${myEvent.eventDate}<p>
+        <p>From ${myEvent.start_hour}:${myEvent.start_minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})} to ${myEvent.end_hour}:${myEvent.end_minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}</p>`,
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonColor: 'red',
+      cancelButtonColor: 'blue',
+      confirmButtonText: 'Delete Reservation',
+      cancelButtonText: 'Cancel',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Proceed to delete reservation.
+            axios.delete(`/api/reservations/${reservation_id}/`)
+            .then(res => {
+              if (res.status === 200) {
+                Swal.fire(res.data, '', 'success');
+                getReservations(); //rerender the calendar.
+              } else {
+                const error = new Error(res.error);
+                throw error;
+              }
+            })
+            .catch(err => {
+              console.error(err);
+              Swal.fire('Error. Please try again', '', 'error')
+            });
+          } else if (result.isDismissed) {
+            
+          }})
   }
 
   // modal states

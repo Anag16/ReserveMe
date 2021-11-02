@@ -52,10 +52,6 @@ module.exports = db => {
       response.json(reservations);
     });
   })
-  // reservations.reduce(
-  //   (previous, current) => ({ ...previous, [current.id]: current }),
-  //   {}
-  // )
 
   router.put("/reservations", (request, response) => {
     const { reservation_date, start_hour, start_minutes, end_hour, end_minutes, user_id, store_id } = request.body.appointmentData;
