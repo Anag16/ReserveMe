@@ -55,15 +55,15 @@ export default function Store(props) {
         closing_hour={storeObj.closing_hour}
       />
 
-      <DayReservationItem 
-        store_id = {storeObj.store_id}
-        store_name = {storeObj.name}
-        store_capacity = {storeObj.capacity}
-        user_id = {user_id}
-        dateString = {reservationDay.toISOString().slice(0, 19).replace('T', ' ')}
-        opening_hour = {storeObj.opening_hour}
-        closing_hour = {storeObj.closing_hour}
-      ></DayReservationItem>
+       {/* Moved reservation calendar into a tab */}
+
+      {/* <DayReservationItem
+        store_id={storeObj.store_id}
+        store_name={storeObj.name}
+        store_capacity={storeObj.capacity}
+        user_id={user_id}
+        dateString={reservationDay.toISOString().slice(0, 19).replace('T', ' ')}
+      ></DayReservationItem> */}
     </div>
   )
 }
