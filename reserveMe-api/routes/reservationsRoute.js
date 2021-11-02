@@ -52,10 +52,6 @@ module.exports = db => {
       response.json(reservations);
     });
   })
-  // reservations.reduce(
-  //   (previous, current) => ({ ...previous, [current.id]: current }),
-  //   {}
-  // )
 
   router.put("/reservations", (request, response) => {
     const { reservation_date, start_hour, start_minutes, end_hour, end_minutes, user_id, store_id } = request.body.appointmentData;
@@ -77,7 +73,8 @@ module.exports = db => {
       WHERE reservation_id = $1::integer`,
       [request.params.id]
     ).then(() => {
-      response.status(204).json({})
+      console.log(`Deleted reservation ${request.params.id}`);
+      response.status(200).send('Your reservation has been deleted.');
     })
   });
   return router;
