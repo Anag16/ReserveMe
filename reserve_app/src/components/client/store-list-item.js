@@ -10,14 +10,15 @@ export default function StoreListItem(props) {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+      <Link to={{pathname: `/store/${store_id}`, state:{store_id } }} style={{ textDecoration: 'none' }}>
+        <CardActionArea>
         <CardMedia
           component="img"
           height="auto"
           image={img}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" color="black">
             { name }
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -27,9 +28,10 @@ export default function StoreListItem(props) {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          <Link to={{pathname: `/store/${store_id}`, state:{store_id } }} style={{ textDecoration: 'none' }}>Details</Link>
+          Details
         </Button>
       </CardActions>
+      </Link>
     </Card>
   );
 }
