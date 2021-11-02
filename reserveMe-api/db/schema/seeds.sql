@@ -6,6 +6,12 @@ VALUES
 ('admin@email.com', '123', '000-0000', 'Admin Astrator', true),
 ('admin@admin.com', '123', '888-8888', 'Ad Ministrator', true);
 
+INSERT INTO admins
+(user_id)
+VALUES
+(3),
+(4);
+
 INSERT INTO stores
 (name, description, image, location, capacity, customer_count, reservation_capacity, safety_measures, opening_hour, closing_hour, admin_id)
 VALUES
@@ -16,12 +22,6 @@ VALUES
 ('Pet Smart', 'Lorem ipsum aliquam vel magna non nulla elementum consectetur a scelerisque orci. Sed eleifend ante lorem, a fermentum ligula commodo sit amet.', 'https://i.insider.com/5ba41783ea4002250a8b4567?width=1300&format=jpeg&auto=webp', '7575 Weston Road, Vaughan, ON L6A 1T1', 2, 30, 20, 'free-for-all', 12, 15, 3),
 ('Aldo', 'Lorem ipsum aliquam vel magna non nulla elementum consectetur a scelerisque orci. Sed eleifend ante lorem, a fermentum ligula commodo sit amet.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/ALDOHillcrestMall.jpg/2560px-ALDOHillcrestMall.jpg', '9350 Yonge St, Richmond Hill, ON L4C 5G2', 30, 18, 25, 'mask required', 10, 20, 3),
 ('Staples', 'Lorem ipsum aliquam vel magna non nulla elementum consectetur a scelerisque orci. Sed eleifend ante lorem, a fermentum ligula commodo sit amet.', 'https://media.blogto.com/articles/20181211-staples-new.jpg?w=1200&cmd=resize_then_crop&height=630&quality=70', '9350 Yonge St, Richmond Hill, ON L4C 5G2', 40, 26, 35, 'mask required, at least one vaccine required', 9, 21, 3);
-
-INSERT INTO admins
-(user_id)
-VALUES
-(3),
-(4);
 
 INSERT INTO reservations
 (reservation_date, start_hour, start_minutes, end_hour, end_minutes, user_id, store_id)

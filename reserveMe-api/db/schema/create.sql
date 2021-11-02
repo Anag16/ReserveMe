@@ -13,6 +13,11 @@ CREATE TABLE users (
   is_admin BOOLEAN DEFAULT FALSE
 );
 
+CREATE TABLE admins (
+admin_id SERIAL PRIMARY KEY NOT NULL,
+user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE
+);
+
 CREATE TABLE stores (
   store_id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
@@ -26,11 +31,6 @@ CREATE TABLE stores (
   opening_hour INTEGER NOT NULL,
   closing_hour INTEGER NOT NULL,
   admin_id INTEGER REFERENCES admins(admin_id) ON DELETE CASCADE
-);
-
-CREATE TABLE admins (
-admin_id SERIAL PRIMARY KEY NOT NULL,
-user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE reservations (
