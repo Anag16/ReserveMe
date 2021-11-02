@@ -61,6 +61,8 @@ export default function Store(props) {
         store_capacity = {storeObj.capacity}
         user_id = {user_id}
         dateString = {reservationDay.toISOString().slice(0, 19).replace('T', ' ')}
+        opening_hour = {storeObj.opening_hour}
+        closing_hour = {storeObj.closing_hour}
       ></DayReservationItem>
     </div>
   )
