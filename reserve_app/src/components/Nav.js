@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import useCookie from "../useCookie";
+import useCookie from "./useCookie";
 import { Button, Menu, MenuItem } from '@mui/material';
 
 function Nav() {
@@ -19,7 +19,7 @@ function Nav() {
   let homePage = cookie ? <NavLink to="/">Home 🏠 </NavLink> : '';
   let storeList = <NavLink to="/stores">List of stores 🏠</NavLink>;
   // let store = cookie ? <NavLink to="/store">Store 🏗 </NavLink> : '';
-  let reservation = cookie ? <NavLink to="/reservation">Reservation 📅 </NavLink> : '';
+  // let reservation = cookie ? <NavLink to="/reservation">Reservation 📅 </NavLink> : '';
   // let dashboard = cookie ? <NavLink to="/admin/dashboard">Dashboard 🐗 </NavLink> : '';
   let login = !cookie ? <NavLink to="/login">Login 🚪 </NavLink> : '';
   let logout = cookie ? <NavLink to="/logout" onClick={() => { updateCookie(null); }}>Logout 📅 </NavLink> : '';
@@ -31,7 +31,7 @@ function Nav() {
       {homePage}
       {storeList}
       {/* {store} */}
-      {reservation}
+      {/* {reservations} */}
         <Button
           id="basic-button"
           aria-controls="basic-menu"
@@ -47,6 +47,7 @@ function Nav() {
           onClose={handleClose}
           MenuListProps={{ 'aria-labelledby': `basic-button`, }}>
           <MenuItem component={NavLink} to="/admin/dashboard">Dashboard</MenuItem>
+          <MenuItem component={NavLink} to="/admin/reservations">Reservations</MenuItem>
           <MenuItem component={NavLink} to="/admin/counter">Counter</MenuItem>
         </Menu>
       {login}
