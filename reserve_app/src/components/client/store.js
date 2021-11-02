@@ -63,7 +63,7 @@ export default function Store(props) {
         dateString={reservationDay.toISOString().slice(0, 19).replace('T', ' ')}
       />
 
-      <DayReservationItem 
+      {/* <DayReservationItem 
         store_id = {storeObj.store_id}
         store_name = {storeObj.name}
         store_capacity = {storeObj.capacity}
@@ -71,7 +71,7 @@ export default function Store(props) {
         dateString = {reservationDay.toISOString().slice(0, 19).replace('T', ' ')}
         opening_hour = {storeObj.opening_hour}
         closing_hour = {storeObj.closing_hour}
-      ></DayReservationItem>
+      ></DayReservationItem> */}
     </div>
   )
 }
