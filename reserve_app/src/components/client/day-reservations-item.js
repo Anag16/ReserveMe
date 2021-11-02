@@ -9,7 +9,7 @@ import withReactContent from 'sweetalert2-react-content'
 import { CalendarCreateModal } from './calendarHelper';
 
 export default function DayReservationItem(props) {
-  const { store_id, store_name, store_capacity, user_id, dateString } = props;
+  const { store_id, store_name, store_capacity, user_id, dateString, opening_hour, closing_hour } = props;
 
   const [isLoading, setLoading] = useState(true);
   const [availableDays, setAvailableDays] = useState({});
@@ -195,6 +195,16 @@ export default function DayReservationItem(props) {
     setSelectorValue(value.dateStr);
   };
 
+  const openTime = new Date();
+  openTime.setHours(opening_hour)
+  const closeTime = new Date();
+  closeTime.setHours(closing_hour)
+
+  const openClosingHours = {
+    opening: `${openTime.getHours()}:00:00`,
+    closing: `${closeTime.getHours()}:00:00`
+  }
+
   return (
     <>
       <FullCalendar
@@ -208,8 +218,8 @@ export default function DayReservationItem(props) {
         //  (e) => console.log(e.dateStr)
         height="auto"
         allDaySlot={false}
-        slotMinTime="07:00:00"
-        slotMaxTime="21:00:00"
+        slotMinTime={openClosingHours.opening}
+        slotMaxTime={openClosingHours.closing}
         eventBackgroundColor="#6db2f7"
       />
 
