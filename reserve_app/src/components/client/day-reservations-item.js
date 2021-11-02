@@ -32,9 +32,13 @@ export default function DayReservationItem(props) {
               endTime.setHours(obj.end_hour);
               endTime.setMinutes(obj.end_minutes);
               calendarObj = {
-                title: "Your Reservation",
+                title: `${store_name}`,
                 start: startTime,
                 end: endTime,
+                reservation_id : obj.reservation_id,
+                user_id : user_id,
+                store_name : store_name
+
               };
               resultArray.push(calendarObj);
             }
@@ -91,6 +95,9 @@ export default function DayReservationItem(props) {
     }
   }
 
+  const handleReservationClick = (e) =>{
+    console.log(e.event.extendedProps);
+  }
   // modal states
   const handleOpenModal = (e) => {
     setModalState({ openModal: true });
@@ -110,6 +117,7 @@ export default function DayReservationItem(props) {
         initialView="timeGridWeek"
         headerToolbar={{ center: 'timeGridWeek,timeGridDay' }}
         events={availableDays}
+        eventClick={(e)=>handleReservationClick(e)}
         nowIndicator
         dateClick={(e) => handleOpenModal(e)}
         //  (e) => console.log(e.dateStr)
