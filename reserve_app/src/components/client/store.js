@@ -4,7 +4,7 @@ import axios from 'axios';
 import useCookie from "../useCookie";
 import StoreTabs from './store-tabs';
 import './store.css';
-
+import DayReservationItem from "./day-reservations-item";
 import StoreHeader from './store-top-display';
 
 export default function Store(props) {
@@ -63,15 +63,15 @@ export default function Store(props) {
         dateString={reservationDay.toISOString().slice(0, 19).replace('T', ' ')}
       />
 
-       {/* Moved reservation calendar into a tab */}
-
-      {/* <DayReservationItem
-        store_id={storeObj.store_id}
-        store_name={storeObj.name}
-        store_capacity={storeObj.capacity}
-        user_id={user_id}
-        dateString={reservationDay.toISOString().slice(0, 19).replace('T', ' ')}
-      ></DayReservationItem> */}
+      <DayReservationItem 
+        store_id = {storeObj.store_id}
+        store_name = {storeObj.name}
+        store_capacity = {storeObj.capacity}
+        user_id = {user_id}
+        dateString = {reservationDay.toISOString().slice(0, 19).replace('T', ' ')}
+        opening_hour = {storeObj.opening_hour}
+        closing_hour = {storeObj.closing_hour}
+      ></DayReservationItem>
     </div>
   )
 }
