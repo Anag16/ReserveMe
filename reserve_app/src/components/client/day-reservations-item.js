@@ -116,20 +116,46 @@ export default function DayReservationItem(props) {
   showCloseButton: true,
   showCancelButton: true,
   focusConfirm: false,
-  confirmButtonText:
-    '<i class="fa fa-thumbs-up"></i> Great!',
+  confirmButtonColor: 'blue',
+  cancelButtonColor: 'red',
+  confirmButtonText: 'Great!',
   confirmButtonAriaLabel: 'Thumbs up, great!',
   cancelButtonText:
-    '<i class="fa fa-thumbs-down"></i>',
+    'Delete Reservation',
   cancelButtonAriaLabel: 'Thumbs down'
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire('Saved!', '', 'success')
+        // Swal.fire('Saved!', '', 'success')
       } else if (result.isDismissed) {
-        Swal.fire('Changes are not saved', '', 'info')
+        deleteReservation(myEvent, myEvent.reservation_id);
       }})
   }
+
+  const deleteReservation = function(myEvent, reservation_id){
+    myAlert.fire({
+      title: '<strong>Are you sure you want to delete this reservation</strong>',
+  icon: 'info',
+  html:
+    `<p>Place: ${myEvent.store_name}<p>
+     <p>Date: ${myEvent.eventDate}<p>
+     <p>From ${myEvent.start_hour}:${myEvent.start_minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})} to ${myEvent.end_hour}:${myEvent.end_minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}</p>`,
+  showCloseButton: true,
+  showCancelButton: true,
+  focusConfirm: false,
+  confirmButtonColor: 'red',
+  cancelButtonColor: 'blue',
+  confirmButtonText: 'Delete Reservation',
+  cancelButtonText: 'Cancel',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        // Proceed to delete reservation.
+      } else if (result.isDismissed) {
+        
+      }})
+  }
+
   // modal states
   const handleOpenModal = (e) => {
     setModalState({ openModal: true });
