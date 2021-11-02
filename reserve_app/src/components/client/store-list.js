@@ -24,19 +24,19 @@ export default function StoreList(props) {
 
   useEffect(() => {
     axios.get(`/api/stores`)
-    .then(res => {
-     if (res.status === 200) {
-       setStores(res.data);
-       setLoading(false);
-     } else {
-       const error = new Error(res.error);
-       throw error;
-     }
-    })
-     .catch(err => {
-       console.error(err);
-       alert('Error. Please try again');
-     });
+      .then(res => {
+        if (res.status === 200) {
+          setStores(res.data);
+          setLoading(false);
+        } else {
+          const error = new Error(res.error);
+          throw error;
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert('Error. Please try again');
+      });
   }, []);
 
   if (isLoading) {
@@ -46,34 +46,34 @@ export default function StoreList(props) {
   const filteredStores = filterStores(stores, searchQuery)
 
   return (
-      <div className="List">
-        <h1>Store List</h1>
-        <Search
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
-        <Grid 
+    <div className="List">
+      <h1>Store List</h1>
+      <Search
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+      <Grid
         container
         rowSpacing={1}
-        columnSpacing={{ xs: 1, sm: 2, md: 3}}
-        direction="row" 
+        columnSpacing={{ xs: 0.5, sm: 1, md: 2 }}
+        direction="row"
         alignItems="center"
         justifyContent="center"
         wrap
-        >
-          {filteredStores.map((store) => (
-            <Grid item xs={4}>
+      >
+        {filteredStores.map((store) => (
+          <Grid item xs={4}>
             <StoreListItem
               key={store.store_id}
-              store_id = {store.store_id}
+              store_id={store.store_id}
               name={store.name}
               desciption={store.desciption}
               img={store.image}
             />
-            </Grid>
-            ))}
           </Grid>
-       
-      </div>
+        ))}
+      </Grid>
+
+    </div>
   );
 }

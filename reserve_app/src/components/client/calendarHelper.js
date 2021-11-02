@@ -10,17 +10,23 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateTimePicker from '@mui/lab/DateTimePicker';
 import Stack from '@mui/material/Stack';
 import axios from 'axios';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function CalendarCreateModal(props) {
   const { openModal, onCloseModal, value, setValue, store_id, user_id, remainingCapacity, store_name, getReservations } = props;
+  const myAlert = withReactContent(Swal);
 
   //Send data to server. api/reservations needs reservation_date, start_hour, start_minutes, end_hour, end_minutes, user_id, store_id
   async function addReservation(appointmentData) {
     axios.put(`/api/reservations`, { appointmentData })
     .then(res => {
       if (res.status === 200) { //Status 204 does not allow to send a body response
-        console.log('The server says:')
-        alert(res.data);
+        Swal.fire(
+          'Done',
+          res.data,
+          'success'
+        )
         getReservations(); //Make the calendar rerender by fetching the reservations again
       } else {
         const error = new Error(res.error);
@@ -30,7 +36,11 @@ function CalendarCreateModal(props) {
      })
      .catch(err => {
       console.error(err);
-      alert('Error. Please try again');
+      Swal.fire(
+        'Error',
+        'Please try again!',
+        'error'
+      );
     });
   }
 
@@ -101,7 +111,7 @@ function CalendarCreateModal(props) {
 
             <DateTimePicker
               renderInput={(params) => <TextField {...params} />}
-              label="Select your start date"
+              label="Start time and date"
               value={value}
               onChange={(newValue) => {
                 setValue(newValue);

@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Stack } from '@mui/material';
 
+import DayReservationItem from './day-reservations-item';
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -43,14 +45,15 @@ const navItems = [
   { id: 0, label: "Details" },
   { id: 1, label: "Hours" },
   { id: 2, label: "Safety Info" },
-  { id: 3, label: "Capacity" }
+  { id: 3, label: "Capacity" },
+  { id: 4, label: "Reservations"}
 ]
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 export default function StoreTabs(props) {
   const [value, setValue] = useState(0);
-  const { description, location, capacity, customer_count, reservation_capacity, safety_measures, opening_hour, closing_hour } = props;
+  const { description, location, capacity, customer_count, reservation_capacity, safety_measures, opening_hour, closing_hour, store_id, store_name, user_id, reservationDay } = props;
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -93,6 +96,17 @@ export default function StoreTabs(props) {
       </TabPanel>
       <TabPanel value={value} index={3}>
         <div>There are currently {customer_count} people inside </div>
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+      <DayReservationItem
+        store_id={store_id}
+        store_name={store_name}
+        store_capacity={capacity}
+        user_id={user_id}
+        dateString={reservationDay}
+        opening_hour={opening_hour}
+        closing_hour={closing_hour}
+      ></DayReservationItem>
       </TabPanel>
     </Box>
   );
