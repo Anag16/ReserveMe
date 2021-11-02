@@ -4,6 +4,8 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import { CalendarCreateModal } from './calendarHelper';
 
 export default function DayReservationItem(props) {
@@ -15,6 +17,9 @@ export default function DayReservationItem(props) {
   const [modalState, setModalState] = useState({ openModal: false });
   const [selectorValue, setSelectorValue] = useState(new Date());
   const [remainingCapacity, setRemainingCapacity] = useState();
+
+ const myAlert = withReactContent(Swal)
+
   const getReservations = function () {
     axios.get(`/api/reservations/${store_id}/`)
       .then(res => {
@@ -27,7 +32,6 @@ export default function DayReservationItem(props) {
               let startTime = new Date(obj.reservation_date);
               startTime.setHours(obj.start_hour);
               startTime.setMinutes(obj.start_minutes);
-
               let endTime = new Date(obj.reservation_date);
               endTime.setHours(obj.end_hour);
               endTime.setMinutes(obj.end_minutes);
@@ -37,8 +41,12 @@ export default function DayReservationItem(props) {
                 end: endTime,
                 reservation_id : obj.reservation_id,
                 user_id : user_id,
-                store_name : store_name
-
+                store_name : store_name,
+                start_hour: obj.start_hour,
+                start_minutes: obj.start_minutes,
+                end_hour : obj.end_hour,
+                end_minutes : obj.end_minutes,
+                eventDate: startTime.toDateString()
               };
               resultArray.push(calendarObj);
             }
@@ -97,6 +105,30 @@ export default function DayReservationItem(props) {
 
   const handleReservationClick = (e) =>{
     console.log(e.event.extendedProps);
+    let myEvent = e.event.extendedProps;
+    myAlert.fire({
+      title: '<strong>RESERVATION DETAILS</strong>',
+  icon: 'info',
+  html:
+    `<p>Place: ${myEvent.store_name}<p>
+     <p>Date: ${myEvent.eventDate}<p>
+     <p>From ${myEvent.start_hour}:${myEvent.start_minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})} to ${myEvent.end_hour}:${myEvent.end_minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}</p>`,
+  showCloseButton: true,
+  showCancelButton: true,
+  focusConfirm: false,
+  confirmButtonText:
+    '<i class="fa fa-thumbs-up"></i> Great!',
+  confirmButtonAriaLabel: 'Thumbs up, great!',
+  cancelButtonText:
+    '<i class="fa fa-thumbs-down"></i>',
+  cancelButtonAriaLabel: 'Thumbs down'
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Saved!', '', 'success')
+      } else if (result.isDismissed) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }})
   }
   // modal states
   const handleOpenModal = (e) => {
