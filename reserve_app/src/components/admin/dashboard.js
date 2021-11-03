@@ -1,6 +1,30 @@
 import React, { useState } from "react";
 
+import './admin.css';
+
 export default function Dashboard(props) {
+  // const [state, setState] = useState({
+  //   storeName: "",
+  //   storeDescription: "",
+  //   storeImage: "",
+  //   storeLocation: "",
+  //   storeCapacity: "",
+  //   reservationCapacity: "",
+  //   safetyMeasures: "",
+  //   openingHours: "",
+  //   closingHours: ""
+  // })
+
+  // const setStoreName = storeName => setState({...state, storeName: storeName})
+  // const setStoreDescription = storeDescription => setState({...state, storeDescription: storeDescription})
+  // const setStoreImage = storeImage => setState({...state, storeImage: storeImage})
+  // const setStoreLocation = storeLocation => setState({...state, storeLocation: storeLocation})
+  // const setStoreCapacity = storeCapacity => setState({...state,storeCapacity: storeCapacity})
+  // const setReservationCapacity = reservationCapacity => setState({...state, reservationCapacity: reservationCapacity})
+  // const setSafetyMeasures = safetyMeasures => setState({...state, safetyMeasures: safetyMeasures})
+  // const setOpeningHours = openingHours => setState({...state, openingHours: openingHours})
+  // const setClosingHours = closingHours => setState({...state, closingHours: closingHours})
+
   const [storeName, setStoreName] = useState(props.storeName || "");
   const [storeDescription, setStoreDescription] = useState(props.storeDescription || "");
   const [storeLocation, setStoreLocation] = useState(props.storeLocation || "");
@@ -13,20 +37,14 @@ export default function Dashboard(props) {
 
   const save = () => {
     save();
-    props.onSave();
+    props.onSave(storeName, storeDescription, storeLocation, safetyMeasures /*store_image, location, store_capacity, reservation_capacity, opening_hours, closing_hours*/);
   }
   return (
     <main className="layout">
       <h1>Dashboard</h1>
-      <section className="dashboard">
-        <h2>Pertinent information group</h2>
-        <h3>Pertinent information</h3>
-      </section>
       <form onSubmit={event => event.preventDefault()}>
         <section>
           <input
-            className="store-name"
-            name="name"
             type="text"
             placeholder="Enter store name"
             value={storeName}
@@ -34,24 +52,26 @@ export default function Dashboard(props) {
             data-testid="store-name-input"
           />
         </section>
+        <br />
         <section className="description">
-          <input
-            className="store-description"
-            name="name"
-            type="text"
+          <label for="store_capacity">Enter store description (optional)</label>
+          <br />
+          <textarea id="description"
             placeholder="Enter store description"
             value={storeDescription}
             onChange={(event) => setStoreDescription(event.target.value)}
             data-testid="store-description-input"
           />
         </section>
+        <br />
         <section className="store-image">
-          Store image
+          <label for="file">Choose a file to use as store image</label
+          ><br />
+          <input type="file" id="store_image" accept="image/png, image/jpeg" />
         </section>
+        <br />
         <section className="location">
           <input
-            className="store-location"
-            name="name"
             type="text"
             placeholder="Enter store location"
             value={storeLocation}
@@ -59,19 +79,23 @@ export default function Dashboard(props) {
             data-testid="store-location-input"
           />
         </section>
+        <br />
         <section className="store-capacity">
-          Store capacity
+          <label for="store_capacity">Enter maximum store capacity</label>
+          <br />
+          <input type="number" id="store_capacity" min="0" />
         </section>
-        <section className="customer-count">
-          Customer count
-        </section>
+        <br />
         <section className="reservation-capacity">
-          reservation capacity
+          <label for="reservation_capacity">Enter maximum reservation capacity</label>
+          <br />
+          <input type="number" id="reservation_capacity" min="0" max="{store_capacity}"/>
         </section>
+        <br />
         <section className="safety-measures">
+          <label for="safety-measures-input">List of safety measures taken</label>
+          <br />
           <input
-            className="safety-measures"
-            name="name"
             type="text"
             placeholder="Enter store safety measures"
             value={safetyMeasures}
@@ -79,16 +103,23 @@ export default function Dashboard(props) {
             data-testid="safety-measures-input"
           />
         </section>
+        <br />
         <section className="opening-hours">
-          Opening hours
+          <label for="opening_hours">Choose a opening time</label>
+          <br />
+          <input type="time" id="opening_hours" />
         </section>
+        <br />
         <section className="closing-hours">
-          Closing hours
+          <label for="closing_hours">Choose a closing time</label>
+          <br />
+          <input type="time" id="closing_hours" />
         </section>
       </form>
+      <br />
       <section className="store-buttons">
-        <button onClick={cancel}>Cancel changes</button>
-        <button onClick={save}>Save changes</button>
+        <button onClick={cancel}>Cancel</button>
+        <button onClick={save}>Save</button>
       </section>
     </main>
   )
