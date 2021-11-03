@@ -1,0 +1,44 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Dashboard {
+  display: flex;
+  flex-direction: column;
+  width:750px;
+  border: solid #90caf9 5px;
+  padding: 2%;
+  align-items: center;
+}
+
+label {
+  font-size: large;
+}
+
+input {
+  font-size: large;
+}
+
+store-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.StoreReservations h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.Counter {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  border: solid #90caf9 5px;
+}
+
+.Counter h1 {
+  display: flex;
+  justify-content: center;
+}
