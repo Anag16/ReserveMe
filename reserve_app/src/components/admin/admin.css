@@ -17,6 +17,10 @@ label {
   font-size: large;
 }
 
+input {
+  font-size: large;
+}
+
 store-buttons {
   display: flex;
   justify-content: center;
