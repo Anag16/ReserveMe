@@ -42,9 +42,9 @@ function a11yProps(index) {
 }
 
 const navItems = [
-  { id: 0, label: "Details & Hours" },
-  { id: 1, label: "Safety Info" },
-  { id: 2, label: "Reservations" }
+  { id: 0, label: "Reservations" },
+  { id: 1, label: "Details & Hours" },
+  { id: 2, label: "Safety Info" }
 ]
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -71,6 +71,17 @@ export default function StoreTabs(props) {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
+        <DayReservationItem
+        store_id={store_id}
+        store_name={store_name}
+        store_capacity={capacity}
+        user_id={user_id}
+        dateString={reservationDay}
+        opening_hour={opening_hour}
+        closing_hour={closing_hour}
+      ></DayReservationItem>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
         <Stack direction="column" spacing={2}>
         <div>{ description }</div>
         <div>Located at: { location }</div>
@@ -90,21 +101,10 @@ export default function StoreTabs(props) {
         </Typography>
         </Stack>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={value} index={2}>
         <div>Current safety measures: { safety_measures }</div>
         <div>Max capacity allowed: {capacity} </div>
         <div>There are currently {customer_count} people inside </div>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <DayReservationItem
-        store_id={store_id}
-        store_name={store_name}
-        store_capacity={capacity}
-        user_id={user_id}
-        dateString={reservationDay}
-        opening_hour={opening_hour}
-        closing_hour={closing_hour}
-      ></DayReservationItem>
       </TabPanel>
     </Box>
   );
