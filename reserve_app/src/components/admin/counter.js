@@ -11,11 +11,11 @@ export default function Counter(props) {
     <main className="Counter">
       <h1>Counter</h1>
       <IconButton>
-        <AddIcon onClick={props.onAdd}/>
+        <AddIcon fontSize="large" onClick={props.onAdd}/>
       </IconButton>
       <h1>{props.count}</h1>
       <IconButton>
-        <RemoveIcon onClick={props.onRemove}/>
+        <RemoveIcon fontSize="large" onClick={props.onRemove}/>
       </IconButton>
     </main>
   )

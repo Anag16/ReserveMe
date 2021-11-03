@@ -5,13 +5,15 @@ import AuthComponent from './components/AuthComponent'
 import Home from './components/Home'
 import Nav from './components/Nav';
 import Dashboard from './components/admin/dashboard';
-import Reservations from './components/admin/reservations';
+import StoreReservations from './components/admin/store-reservations';
 import Counter from './components/admin/counter'
 import Store from './components/client/store';
 import StoreList from './components/client/store-list';
+import Reservations from './components/client/reservations';
 import Login from './components/Login/Login';
 import Logout from './components/Login/Logout';
 import Register from './components/Register/Register';
+
 
 
 class App extends Component {  
@@ -25,6 +27,7 @@ class App extends Component {
           <Route path="/logout" component={Logout} />
           <Route path="/register" component={Register} />
           <Route path="/admin/dashboard" component={AuthComponent(Dashboard)} />
+          <Route path="/admin/store-reservations" component={AuthComponent(StoreReservations)} />
           <Route path="/reservations" component={AuthComponent(Reservations)} />
           <Route path="/admin/counter" component={AuthComponent(Counter)} />
           <Route path="/stores" component={AuthComponent(StoreList)} />

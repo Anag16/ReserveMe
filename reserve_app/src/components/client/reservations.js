@@ -1,7 +1,5 @@
 import React from "react";
-import Calendar from "../client/calendar";
-
-import './admin.css';
+import Calendar from "./calendar";
 
 export default function Reservations(props) {
 
