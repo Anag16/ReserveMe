@@ -20,7 +20,7 @@ export default function Search(props) {
       adornedStart: {
         fontSize: 20,
       },
-      width: '360px',
+      width: '40vw',
     }});
 
 // const classes = useStyles();
