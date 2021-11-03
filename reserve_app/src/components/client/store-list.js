@@ -75,7 +75,7 @@ export default function StoreList(props) {
           sx={{ padding: 3, alignItems: "center", justifyContent: "center" }}
         >
           {filteredStores.map((store) => (
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={6} md={4}>
               <StoreListItem
                 key={store.store_id}
                 store_id={store.store_id}

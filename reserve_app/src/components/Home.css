@@ -1,0 +1,69 @@
+.home-wrapper{
+  position: absolute;
+  z-index: -10;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+  background-image: url('/src/images/hero_img.jpg');
+  background-position: bottom center;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+}
+
+#heroText{
+  display: flex;
+  width: 70vw;
+  flex-direction: column;
+  padding: 5%;
+}
+.primaryColor{
+  color: #003170;
+}
+.secondaryColor{
+  color: #FF765E;
+}
+.primaryColorBG{
+  color: #003170;
+  background-color: #FF765E;
+  padding: 4px;
+}
+.secondaryColorBG{
+  color: #FF765E;
+  background-color: #003170;
+  padding: 4px;
+}
+.sloganMain{
+  font-size: 2em;
+  color: whitesmoke;
+  margin: 10px;
+}
+#mainName{
+  font-size: 5em;
+}
+.homePageLink{
+  font-size: 1.3em;
+  text-decoration: underline;
+}
+
+.btn{
+  background-color: #EB7DB2;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px;
+  margin-top: 2em;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 25px;
+}
+
+.btn:hover{
+  background-color: #FF765E;
+  color: whitesmoke;
+}
