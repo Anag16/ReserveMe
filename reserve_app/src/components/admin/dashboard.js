@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "@mui/material/Button"
 
 import './admin.css';
 
@@ -42,41 +43,43 @@ export default function Dashboard(props) {
   return (
     <main className="layout">
       <h1>Dashboard</h1>
+      <div className="Dashboard">
       <form onSubmit={event => event.preventDefault()}>
         <section>
-          <input
+          <label for="store-name">Enter store name</label>
+          <br/>
+          <input id="store-name"
             type="text"
             placeholder="Enter store name"
             value={storeName}
             onChange={(event) => setStoreName(event.target.value)}
-            data-testid="store-name-input"
           />
         </section>
         <br />
         <section className="description">
-          <label for="store_capacity">Enter store description (optional)</label>
+          <label for="description">Enter store description</label>
           <br />
           <textarea id="description"
             placeholder="Enter store description"
             value={storeDescription}
             onChange={(event) => setStoreDescription(event.target.value)}
-            data-testid="store-description-input"
           />
         </section>
         <br />
         <section className="store-image">
-          <label for="file">Choose a file to use as store image</label
-          ><br />
+          <label for="file">Choose a file to use as store image</label>
+          <br />
           <input type="file" id="store_image" accept="image/png, image/jpeg" />
         </section>
         <br />
-        <section className="location">
+        <section className="store-location">
+        <label for="store-location">Enter store location</label>
+        <br/>
           <input
             type="text"
             placeholder="Enter store location"
             value={storeLocation}
             onChange={(event) => setStoreLocation(event.target.value)}
-            data-testid="store-location-input"
           />
         </section>
         <br />
@@ -100,7 +103,6 @@ export default function Dashboard(props) {
             placeholder="Enter store safety measures"
             value={safetyMeasures}
             onChange={(event) => setSafetyMeasures(event.target.value)}
-            data-testid="safety-measures-input"
           />
         </section>
         <br />
@@ -118,9 +120,10 @@ export default function Dashboard(props) {
       </form>
       <br />
       <section className="store-buttons">
-        <button onClick={cancel}>Cancel</button>
-        <button onClick={save}>Save</button>
+        <Button variant="outlined" onClick={cancel}>Cancel</Button>
+        <Button variant="contained" onClick={save}>Save</Button>
       </section>
+      </div>
     </main>
   )
 }
