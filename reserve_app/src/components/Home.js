@@ -6,8 +6,8 @@ export default function Home(props) {
   return(
     <div className="home-wrapper">
       <div id="heroText">
-        <h1 id="mainName">ReserveMe</h1>
-        <p id="sloganMain">You don't need to wait, skip the line.</p>
+        <h1 id="mainName"><span className='primaryColorBG'>Reserve</span><span className='secondaryColorBG'>Me!</span></h1>
+        <p className="sloganMain"><span className='primaryColor'>You don't need to wait,</span><span className='secondaryColor'> skip the line.</span></p>
         <div className="featuredbttns">
             <a className="btn" href="/stores">Your Favourite Stores </a>
         </div>

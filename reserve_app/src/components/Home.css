@@ -19,31 +19,53 @@
   flex-direction: column;
   padding: 5%;
 }
+.primaryColor{
+  color: #003170;
+}
+.secondaryColor{
+  color: #FF765E;
+}
+.primaryColorBG{
+  color: #003170;
+  background-color: #FF765E;
+  padding: 4px;
+}
+.secondaryColorBG{
+  color: #FF765E;
+  background-color: #003170;
+  padding: 4px;
+}
+.sloganMain{
+  font-size: 2em;
+  color: whitesmoke;
+  margin: 10px;
+}
+#mainName{
+  font-size: 4em;
+  margin: 10px;
+}
 
 .btn{
-  background-color: #bce093;
+  background-color: #EB7DB2;
   border: none;
-  color: #ac662a;
+  color: white;
   padding: 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin: 4px 2px;
+  margin: 5px;
+  margin-top: 2em;
   cursor: pointer;
-  border-radius: 50px;
+  border-radius: 4px;
   font-size: 25px;
 }
 
 .btn:hover{
-  border: solid 2px #ac662a;
-  font-size: 30px;
+  background-color: #FF765E;
+  color: whitesmoke;
 }
 
-.btn-ghost{
-  color: #bce093;
-  background: none;
-  border: solid 2px #ac662a;
-}
+
 
 .btn-ghost:hover{
   color: #ac662a;
