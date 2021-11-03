@@ -25,7 +25,7 @@ class App extends Component {
           <Route path="/logout" component={Logout} />
           <Route path="/register" component={Register} />
           <Route path="/admin/dashboard" component={AuthComponent(Dashboard)} />
-          <Route path="/admin/reservations" component={AuthComponent(Reservations)} />
+          <Route path="/reservations" component={AuthComponent(Reservations)} />
           <Route path="/admin/counter" component={AuthComponent(Counter)} />
           <Route path="/stores" component={AuthComponent(StoreList)} />
           <Route path="/store" component={AuthComponent(Store)} />

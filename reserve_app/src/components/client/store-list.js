@@ -53,7 +53,7 @@ export default function StoreList(props) {
       <Stack spacing={2} direction="column" sx={{alignItems: "center", justifyContent: "center"}}>
         <Box sx={{ 
           backgroundColor: blue[200], 
-          padding: 2, 
+          padding: 1, 
           width: '100%', 
           display: "flex", 
           // flexDirection: "column",
