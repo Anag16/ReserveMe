@@ -19,7 +19,7 @@ function Nav() {
   const loggedInLinks = [
     { name: "Home", path: "/" },
     { name: "Stores", path: "/stores" },
-    { name: "Reservation", path: "/reservation" },
+    { name: "Reservation", path: "/admin/reservations" },
   ];
 
   const loggedOutLinks = [
@@ -31,7 +31,7 @@ function Nav() {
   let homePage = cookie ? <NavLink to="/">Home 🏠 </NavLink> : '';
   let storeList = <NavLink to="/stores">List of stores 🏠</NavLink>;
   // let store = cookie ? <NavLink to="/store">Store 🏗 </NavLink> : '';
-  let reservation = cookie ? <NavLink to="/reservation">Reservation 📅 </NavLink> : '';
+  let reservation = cookie ? <NavLink to="/admin/reservation">Reservation 📅 </NavLink> : '';
   // let dashboard = cookie ? <NavLink to="/admin/dashboard">Dashboard 🐗 </NavLink> : '';
   let login = !cookie ? <NavLink to="/login">Login 🚪 </NavLink> : '';
   let logout = cookie ? <NavLink to="/logout" onClick={() => { updateCookie(null); }}>Logout 📅 </NavLink> : '';

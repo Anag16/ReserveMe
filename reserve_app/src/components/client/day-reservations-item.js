@@ -128,20 +128,20 @@ export default function DayReservationItem(props) {
      <p>Date: ${myEvent.eventDate}<p>
      <p>From ${myEvent.start_hour}:${myEvent.start_minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})} to ${myEvent.end_hour}:${myEvent.end_minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}</p>`,
   showCloseButton: true,
-  showCancelButton: true,
+  showDenyButton: true,
   focusConfirm: false,
   confirmButtonColor: 'blue',
-  cancelButtonColor: 'red',
+  denyButtonColor: 'red',
   confirmButtonText: 'Great!',
   confirmButtonAriaLabel: 'Thumbs up, great!',
-  cancelButtonText:
+  denyButtonText:
     'Delete Reservation',
-  cancelButtonAriaLabel: 'Thumbs down'
+  declineButtonAriaLabel: 'Thumbs down'
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         // Swal.fire('Saved!', '', 'success')
-      } else if (result.isDismissed) {
+      } else if (result.isDenied) {
         deleteReservation(myEvent, myEvent.reservation_id);
       }})
   }
