@@ -15,7 +15,7 @@
 
 #heroText{
   display: flex;
-  width: 50vw;
+  width: 70vw;
   flex-direction: column;
   padding: 5%;
 }
@@ -41,8 +41,11 @@
   margin: 10px;
 }
 #mainName{
-  font-size: 4em;
-  margin: 10px;
+  font-size: 5em;
+}
+.homePageLink{
+  font-size: 1.3em;
+  text-decoration: underline;
 }
 
 .btn{
@@ -63,13 +66,4 @@
 .btn:hover{
   background-color: #FF765E;
   color: whitesmoke;
-}
-
-
-
-.btn-ghost:hover{
-  color: #ac662a;
-  font-size: 30px;
-  background: #bce093;
-  border: solid 2px #bce093;
 }

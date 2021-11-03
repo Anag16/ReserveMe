@@ -7,9 +7,9 @@ export default function Home(props) {
     <div className="home-wrapper">
       <div id="heroText">
         <h1 id="mainName"><span className='primaryColorBG'>Reserve</span><span className='secondaryColorBG'>Me!</span></h1>
-        <p className="sloganMain"><span className='primaryColor'>You don't need to wait,</span><span className='secondaryColor'> skip the line.</span></p>
+        <p className="sloganMain"><span className='primaryColor'>You don't need to wait,</span><span className='secondaryColor'><a className="homePageLink secondaryColor" href="/stores"> skip the line.</a></span></p>
         <div className="featuredbttns">
-            <a className="btn" href="/stores">Your Favourite Stores </a>
+            {/* <a className="btn" href="/stores">Your Favourite Stores </a> */}
         </div>
       </div>
       <div id="emptyBlock">
