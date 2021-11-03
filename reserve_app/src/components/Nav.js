@@ -1,8 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import useCookie from "../useCookie";
+import useCookie from "./useCookie";
 import { Button, Menu, MenuItem, AppBar, Box, Toolbar } from '@mui/material';
-
 import './Nav.css';
 
 function Nav() {
