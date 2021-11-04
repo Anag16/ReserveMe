@@ -32,13 +32,21 @@ export default function Dashboard(props) {
   const [safetyMeasures, setSafetyMeasures] = useState(props.safetyMeasures || "");
 
   const cancel = () => {
-    // cancel();
-    props.onCancel();
+    setStoreName(storeName);
+    setStoreDescription(storeDescription);
+    setStoreLocation(storeLocation);
+    setSafetyMeasures(safetyMeasures);
   };
 
-  const save = () => {
+  function save(storeName, storeDescription, storeLocation, safetyMeasures) {
     // save();
-    props.onSave(storeName, storeDescription, storeLocation, safetyMeasures /*store_image, location, store_capacity, reservation_capacity, opening_hours, closing_hours*/);
+    const store = {
+      storeName: storeName,
+      storeDescription: storeDescription,
+      storeLocation: storeLocation,
+      safetyMeasures: safetyMeasures
+    }
+    // props.onSave(store/*storeName, storeDescription, storeLocation, safetyMeasures, store_image, location, store_capacity, reservation_capacity, opening_hours, closing_hours*/);
   }
   return (
     <main className="layout">
