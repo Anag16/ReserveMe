@@ -57,7 +57,7 @@ export default function Dashboard(props) {
           <label for="store-name">Store Name:</label>
           <input id="store-name"
             type="text"
-            placeholder="Enter store name"
+            placeholder="Pet Smart"
             value={storeName}
             onChange={(event) => setStoreName(event.target.value)}
           />
@@ -66,12 +66,12 @@ export default function Dashboard(props) {
         <section className="description">
           <label for="description">Store Description:</label>
           <textarea id="description" rows="5" cols="30"
-            placeholder="Enter Store Description"
+            placeholder="Lorem ipsum aliquam vel magna non nulla elementum consectetur a scelerisque orci. Sed eleifend ante lorem, a fermentum ligula commodo sit amet."
             value={storeDescription}
             onChange={(event) => setStoreDescription(event.target.value)}
           />
+        </section>
 
-        </section>  
         <section className="store-image">
           <label for="file">Choose a file to use as store image</label>
           <input type="file" id="store_image" accept="image/png, image/jpeg" />
@@ -81,7 +81,7 @@ export default function Dashboard(props) {
         <label for="store-location">Store Location:</label>
           <input
             type="text"
-            placeholder="Enter Store Location"
+            placeholder="7575 Weston Road, Vaughan, ON L6A 1T1"
             value={storeLocation}
             onChange={(event) => setStoreLocation(event.target.value)}
           />
