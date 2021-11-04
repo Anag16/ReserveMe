@@ -9,9 +9,9 @@ export default function Search(props) {
 
   const useStyles = createTheme({
     root: {
-      backgroundColor: 'none',
+      backgroundColor: 'rgba(255,255,255,0.2)',
       borderRadius: '10px',
-      border: '2px solid rgba(61, 61, 61, 0.8)',
+      border: '2px solid rgba(61, 61, 61, 0.5)',
       padding: '1px 3px',
       // color: 'white',
       typography: {

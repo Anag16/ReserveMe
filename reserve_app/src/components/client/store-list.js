@@ -50,7 +50,7 @@ export default function StoreList(props) {
 
   return (
     <div className="List">
-      <Stack spacing={2} direction="column" sx={{alignItems: "center", justifyContent: "center"}}>
+      {/* <Stack spacing={2} direction="column" sx={{alignItems: "center", justifyContent: "center"}}> */}
         <Box sx={{ 
           backgroundColor: blue[200], 
           padding: 1, 
@@ -76,17 +76,19 @@ export default function StoreList(props) {
         >
           {filteredStores.map((store) => (
             <Grid item xs={8} sm={6} md={4}>
-              <StoreListItem
+              <span className="grid">
+                <StoreListItem
                 key={store.store_id}
                 store_id={store.store_id}
                 name={store.name}
                 desciption={store.desciption}
                 img={store.image}
               />
+              </span>
             </Grid>
           ))}
         </Grid>
-      </Stack>
+      {/* </Stack> */}
     </div>
   );
 }
