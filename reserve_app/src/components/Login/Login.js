@@ -37,8 +37,8 @@ export default function Login() {
 
   return(
     <div className="login-wrapper">
-      <h1>Please Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form id='loginForm' onSubmit={handleSubmit}>
+      <h1><span className='primaryColor'>Log</span><span className='secondaryColor'> In</span></h1>
         <label>
           <p>Email</p>
           <input type="text" onChange={e => setEmail(e.target.value)} />
@@ -48,7 +48,7 @@ export default function Login() {
           <input type="password" onChange={e => setPassword(e.target.value)} />
         </label>
         <div>
-          <button type="submit">Submit</button>
+          <button id='submitBtn' class='btn' type="submit">Submit</button>
         </div>
       </form>
     </div>
