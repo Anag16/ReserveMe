@@ -1,0 +1,15 @@
+.hours-header {
+  display: flex;
+  justify-content: center;
+}
+
+.hours {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+}
+
+p {
+  margin-top: 0px;
+  font-size: large;
+}

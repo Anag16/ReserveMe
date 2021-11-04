@@ -5,8 +5,9 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Stack } from '@mui/material';
-
 import DayReservationItem from './day-reservations-item';
+
+import "./store-tabs.css"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -83,17 +84,19 @@ export default function StoreTabs(props) {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Stack direction="column" spacing={2}>
-        <div>{ description }</div>
-        <div>Located at: { location }</div>
+        <p>{ description }</p>
+        <h3>Locations: </h3>
+        <ul><li><p>{ location }</p></li></ul>
+        <h3 className="hours-header">Store Hours:</h3>
         <Typography variant="overline">  
         {
           daysOfWeek.map(day => {
             return (
-              <Stack direction="row"
-              spacing={2}
+              <Stack direction="row" className="hours"
+              spacing={3}
               >
-              <div>{ day }</div>
-              <div>{opening_hour}:00 AM - { closing_hour}:00 PM</div>
+              <p>{ day }</p>
+              <p>{opening_hour}:00 AM - { closing_hour}:00 PM</p>
             </Stack>
             )
           })
@@ -102,9 +105,12 @@ export default function StoreTabs(props) {
         </Stack>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <div>Current safety measures: { safety_measures }</div>
-        <div>Max capacity allowed: {capacity} </div>
-        <div>There are currently {customer_count} people inside </div>
+        <h3>Current safety measures: </h3>
+        <ul><li><p>{ safety_measures }</p></li></ul>
+        <h3>Max capacity allowed: </h3>
+        <p>{capacity} </p>
+        <h3>Current capacity:</h3>
+        <p> {customer_count} people</p>
       </TabPanel>
     </Box>
   );
