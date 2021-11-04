@@ -17,12 +17,12 @@ function Nav() {
   };
 
   const loggedInLinks = [
-    { name: "Home", path: "/" },
     { name: "Stores", path: "/stores" },
     { name: "My Reservations", path: "/reservations" },
   ];
 
   const loggedOutLinks = [
+    { name: "Home", path: "/" },
     { name: "Login", path: "/login" },
     { name: "Register", path: "/register" },
   ];
