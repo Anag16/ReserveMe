@@ -36,9 +36,9 @@ export default function Register() {
 
   return(
     <div className="login-wrapper">
-      <h1>Register</h1>
+      <h1><span className='primaryColor'>Sign</span><span className='secondaryColor'> Up</span></h1>
       <form onSubmit={handleSubmit}>
-      ` <label>
+        <label>
           <p>Name</p>
           <input type="text" onChange={e => setName(e.target.value)} />
         </label>
@@ -55,7 +55,7 @@ export default function Register() {
           <input type="number" onChange={e => setPhone(e.target.value)} />
         </label>
         <div>
-          <button type="submit">Submit</button>
+          <button className='btn2' type="submit">Submit</button>
         </div>
       </form>
     </div>

@@ -2,7 +2,7 @@
 
 const registerUser = function(db, email, password, phone, name){
     return db.query(
-        `INSERT INTO users (email, password, phone, name, is_admin) VALUES ('${email}', '${password}', '${phone}', '${name}', 'client')`
+        `INSERT INTO users (email, password, phone, name, is_admin) VALUES ('${email}', '${password}', '${phone}', '${name}', 'false')`
     )
 }
 
