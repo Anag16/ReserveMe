@@ -15,19 +15,19 @@ An app/site to reserve a spot in various shops and establishments (because of th
 ## Screenshots
 
 
-- ReserveMe!
+- ReserveMe! - Login
 !["Login"](https://raw.githubusercontent.com/Anag16/ReserveMe/main/docs/Login.gif)
 
 
-- ReserveMe!
+- ReserveMe! - Making a reservation
 !["Making a reservation"](https://raw.githubusercontent.com/Anag16/ReserveMe/main/docs/Reservations.gif)
 
 
-- ReserveMe!
+- ReserveMe! - Store Information
 !["Store Information"](https://raw.githubusercontent.com/Anag16/ReserveMe/main/docs/Store_info.gif)
 
 
-- ReserveMe!
+- ReserveMe! - Admin Features
 !["Admin Features"](https://raw.githubusercontent.com/Anag16/ReserveMe/main/docs/Admin.gif)
 
 
