@@ -17,6 +17,7 @@ function Nav() {
   };
 
   const loggedInLinks = [
+    { name: "Home", path: "/" },
     { name: "Stores", path: "/stores" },
     { name: "My Reservations", path: "/reservations" },
   ];
