@@ -32,22 +32,29 @@ export default function Dashboard(props) {
   const [safetyMeasures, setSafetyMeasures] = useState(props.safetyMeasures || "");
 
   const cancel = () => {
-    // cancel();
-    props.onCancel();
+    setStoreName(storeName);
+    setStoreDescription(storeDescription);
+    setStoreLocation(storeLocation);
+    setSafetyMeasures(safetyMeasures);
   };
 
-  const save = () => {
+  function save(storeName, storeDescription, storeLocation, safetyMeasures) {
     // save();
-    props.onSave(storeName, storeDescription, storeLocation, safetyMeasures /*store_image, location, store_capacity, reservation_capacity, opening_hours, closing_hours*/);
+    const store = {
+      storeName: storeName,
+      storeDescription: storeDescription,
+      storeLocation: storeLocation,
+      safetyMeasures: safetyMeasures
+    }
+    // props.onSave(store/*storeName, storeDescription, storeLocation, safetyMeasures, store_image, location, store_capacity, reservation_capacity, opening_hours, closing_hours*/);
   }
   return (
     <main className="layout">
       <h1>Dashboard</h1>
       <div className="Dashboard">
       <form onSubmit={event => event.preventDefault()}>
-        <section>
-          <label for="store-name">Enter store name</label>
-          <br/>
+        <section className="store-name">
+          <label for="store-name">Store Name:</label>
           <input id="store-name"
             type="text"
             placeholder="Enter store name"
@@ -55,73 +62,64 @@ export default function Dashboard(props) {
             onChange={(event) => setStoreName(event.target.value)}
           />
         </section>
-        <br />
+
         <section className="description">
-          <label for="description">Enter store description</label>
-          <br />
-          <textarea id="description"
-            placeholder="Enter store description"
+          <label for="description">Store Description:</label>
+          <textarea id="description" rows="5" cols="30"
+            placeholder="Enter Store Description"
             value={storeDescription}
             onChange={(event) => setStoreDescription(event.target.value)}
           />
-        </section>
-        <br />
+
+        </section>  
         <section className="store-image">
           <label for="file">Choose a file to use as store image</label>
-          <br />
           <input type="file" id="store_image" accept="image/png, image/jpeg" />
         </section>
-        <br />
+
         <section className="store-location">
-        <label for="store-location">Enter store location</label>
-        <br/>
+        <label for="store-location">Store Location:</label>
           <input
             type="text"
-            placeholder="Enter store location"
+            placeholder="Enter Store Location"
             value={storeLocation}
             onChange={(event) => setStoreLocation(event.target.value)}
           />
         </section>
-        <br />
+
         <section className="store-capacity">
-          <label for="store_capacity">Enter maximum store capacity</label>
-          <br />
-          <input type="number" id="store_capacity" min="0" />
-        </section>
-        <br />
+          <label for="store_capacity">Maximum Store Capacity:</label>
+          <input type="number" id="store_capacity" min="0" max="99"/>
+        </section>  
+
         <section className="reservation-capacity">
-          <label for="reservation_capacity">Enter maximum reservation capacity</label>
-          <br />
-          <input type="number" id="reservation_capacity" min="0" max="{store_capacity}"/>
+          <label for="reservation_capacity">Maximum Reservation Capacity:</label>
+          <input type="number" id="reservation_capacity" min="0" max="99"/>
         </section>
-        <br />
+
         <section className="safety-measures">
-          <label for="safety-measures-input">List of safety measures taken</label>
-          <br />
-          <input
-            type="text"
+          <label for="safety-measures-input">Safety Measures Taken:</label>
+          <textarea id="safety-measures" rows="5" cols="30"
             placeholder="Enter store safety measures"
             value={safetyMeasures}
             onChange={(event) => setSafetyMeasures(event.target.value)}
           />
         </section>
-        <br />
+
         <section className="opening-hours">
-          <label for="opening_hours">Choose a opening time</label>
-          <br />
+          <label for="opening_hours">Opening Hour: </label>
           <input type="time" id="opening_hours" />
         </section>
-        <br />
+
         <section className="closing-hours">
-          <label for="closing_hours">Choose a closing time</label>
-          <br />
+          <label for="closing_hours">Closing Hour: </label>
           <input type="time" id="closing_hours" />
         </section>
       </form>
-      <br />
+
       <section className="store-buttons">
-        <Button variant="outlined" onClick={cancel}>Cancel</Button>
-        <Button variant="contained" onClick={save}>Save</Button>
+        <Button className="cancel" variant="outlined" onClick={cancel}>Cancel</Button>
+        <Button className="save" variant="contained" onClick={save}>Save</Button>
       </section>
       </div>
     </main>

@@ -4,26 +4,35 @@
   align-items: center;
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2%;
+}
+
+.store-name, .store-capacity, .reservation-capacity, .opening-hours, .closing-hours, .store-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .Dashboard {
   display: flex;
   flex-direction: column;
   width:750px;
   border: solid #90caf9 5px;
-  padding: 2%;
-  align-items: center;
+  padding: 3%;
 }
 
 label {
-  font-size: large;
+  font-size: 20px;
+  margin-right: 15px;
 }
 
-input {
-  font-size: large;
-}
-
-store-buttons {
-  display: flex;
-  justify-content: center;
+input, textarea {
+  margin-top: 5px;
+  font-size: 18px;
 }
 
 .StoreReservations h1 {
@@ -34,11 +43,12 @@ store-buttons {
 .Counter {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 400px;
   border: solid #90caf9 5px;
 }
 
 .Counter h1 {
   display: flex;
   justify-content: center;
+  font-size: 112px;
 }

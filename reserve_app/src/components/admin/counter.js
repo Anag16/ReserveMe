@@ -6,18 +6,18 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import './admin.css';
 
 export default function Counter(props) {
-
+  
   return (
     <main className="layout">
       <h1>Counter</h1>
       <div className="Counter">
-      <IconButton>
-        <AddIcon fontSize="large" onClick={props.onAdd}/>
-      </IconButton>
-      <h1>1</h1>
-      <IconButton>
-        <RemoveIcon fontSize="large" onClick={props.onRemove}/>
-      </IconButton>
+        <IconButton>
+        <AddIcon sx={{ fontSize: 222 }} onClick={props.onAdd}/>
+        </IconButton>
+        <h1>1</h1>
+        <IconButton>
+        <RemoveIcon sx={{ fontSize: 222 }} onClick={props.onRemove}/>
+        </IconButton>
       </div>
     </main>
   )
