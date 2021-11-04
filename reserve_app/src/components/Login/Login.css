@@ -9,11 +9,13 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
-  place-items: center;
-  padding-top: 100px;
+  padding-left: 100px;
+  padding-top: 80px;
   min-height: 700px;
   color: #003170;
 }
+
+
 
 #submitBtn{
   margin-top: 1rem;

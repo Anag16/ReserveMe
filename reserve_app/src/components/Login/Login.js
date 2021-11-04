@@ -37,8 +37,8 @@ export default function Login() {
 
   return(
     <div className="login-wrapper">
+      <form id='loginForm' onSubmit={handleSubmit}>
       <h1><span className='primaryColor'>Log</span><span className='secondaryColor'> In</span></h1>
-      <form onSubmit={handleSubmit}>
         <label>
           <p>Email</p>
           <input type="text" onChange={e => setEmail(e.target.value)} />
